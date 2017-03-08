@@ -4,7 +4,6 @@ class MainMenuScreen extends ScreenContainer
     constructor(mmname)
     {
         super(new MainMenuState(mmname), "menu");
-
     }
 
     start()
@@ -53,7 +52,7 @@ class MainMenuState extends State {
             "user-login" : 1
         }
     }
-    
+
     // for when this state is first created
     start()
     {
@@ -63,20 +62,6 @@ class MainMenuState extends State {
                 GM.screenmanager.closeAll();
             }, 1000);
         }
-    }
-
-    pause() // for when we leave this menu, but it still exists
-    {
-        // logic for any particular menus goes here
-        if(this.menuName == "guest-login")
-        {
-            // sign in the guest
-        }
-        if(this.menuName == "user-login")
-        {
-            // sign in the user
-        }
-    }
 
     // for when the user clicked the back button and ended up here
     restart()
@@ -85,7 +70,7 @@ class MainMenuState extends State {
         if(this.no_backtrack_menus[this.menuName] !== undefined)
             GM.screenmanager.close();
     }
-
+    
 }
 
 
