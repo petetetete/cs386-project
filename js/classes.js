@@ -1,9 +1,14 @@
 class GameManager
 {
-    constructor()
+    constructor(firstScreen)
     {
-        var loadscreen = new LoadScreen();
-        this.screenmanager = new ScreenManager(loadscreen);
+        this.users = [];
+        this.screenmanager = new ScreenManager(firstScreen);
+    }
+
+    draw()
+    {
+        this.screenmanager.draw();
     }
 }
 
@@ -12,27 +17,42 @@ class ScreenManager
 {
     constructor(r)
     {
-        this.users = [];
         this._rootScreen = r;
         this._topScreen = r;
         this._settings = null;
+
+        r.start();
     }
 
     set topScreen(r)
     {
         if(this._topScreen != null)
             r.parent = this._topScreen;
+        this._topScreen.pause();
         this._topScreen = r;
+        r.start();
     }
 
-    closeTop()
+    closeAll()
+    {
+        while(this._topScreen != this._rootScreen)
+            this.close();
+    }
+
+    close()
     {
         if(this._topScreen != null)
         {
             this._topScreen.close();
             this._topScreen = this._topScreen.parent;
-            this._topScreen.onFocus();
+            if(this._topScreen != null)
+                this._topScreen.restart();
         }
+    }
+
+    draw()
+    {
+        this._topScreen.draw();
     }
 }
 
@@ -61,13 +81,28 @@ class ScreenContainer
     {
         if(this._state != null)
             this._state.close(); // clean up the state
-        this.onClose();
     }
 
-    // events
-    // NOTE: these need to be implemented in subclasses
-    onClose() {} // when the screen is closed
-    onReturn() {} // called when the screen gets control back from a child
+    start()
+    {
+        if(this._state != null)
+            this._state.start(); // clean up the state
+    }
+
+    restart() {
+        if(this._state != null)
+            this._state.restart(); // get state back into running shape
+    } // called when the screen gets control back from a child
+
+    pause() {
+        if(this._state != null)
+            this._state.pause();
+    }
+
+    draw() {
+        if(this._state != null)
+            this._state.draw();
+    }
 }
 
 class LoadScreen extends ScreenContainer
@@ -78,15 +113,20 @@ class LoadScreen extends ScreenContainer
     }
 }
 
+
+
 class State
 {
-    constructor(){}
-}
-class MainMenuState extends State {
-    constructor()
-    {
-        super();
+    constructor(){
+        this.bb = new Blackboard();
     }
+
+    // events
+    // NOTE: these need to be implemented in subclasses
+    close() {}
+    start() {}
+    restart() {}
+    pause() {}
 }
 class LoadState extends State {
     constructor()
@@ -125,6 +165,28 @@ class GuestUser extends User {
 
 
 
+class Blackboard {
+    constructor()
+    {
+        this._store = {};
+    }
+
+    add(key, value)
+    {
+        this._store[key] = value;
+    }
+
+    read(key)
+    {
+        value = this._store[key];
+        if(value == undefined)
+            return null;
+        return value;
+    }
+}
+
+
+
 // usage:
 // gm = new <subclass of GameMode>(<name>, [levelData])
 // gm.unpackLevel() -> creates a new Level object
@@ -158,7 +220,7 @@ class GameMode {
         // remove saved level state?
     }
 }
-class SinglePlayer {
+class SinglePlayer extends GameMode {
     constructor(n, l)
     {
         // TODO: check if level data is compatible with this mode
