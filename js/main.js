@@ -7,4 +7,4 @@
     GM.screenmanager.root = first_screen;
 
     GM.screenmanager.root.start();
-})
+})();
