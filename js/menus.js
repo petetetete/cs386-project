@@ -62,7 +62,8 @@ class MainMenuState extends State {
                 GM.screenmanager.closeAll();
             }, 1000);
         }
-
+    }
+    
     // for when the user clicked the back button and ended up here
     restart()
     {
@@ -70,7 +71,7 @@ class MainMenuState extends State {
         if(this.no_backtrack_menus[this.menuName] !== undefined)
             GM.screenmanager.close();
     }
-    
+
 }
 
 
