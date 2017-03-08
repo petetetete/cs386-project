@@ -5,11 +5,11 @@ head, body {
 }
 
 .back-button {
-    position: fixed;
-    top: 5px; left: 15px;
+    top: 5px; left: -15px;
     z-index: 1;
     color: #fff;
     font-size: 4em;
+    margin-right: 20px;
 }
 
 .main-container {
@@ -31,6 +31,10 @@ head, body {
     justify-content: center;
 }
 
+.center-align {
+    align-self: center;
+}
+
 .menu-block {
     border-radius: 5px;
     width: 500px;
@@ -39,7 +43,7 @@ head, body {
     text-align: center;
     margin: 5px 0;
     align-self: center;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.18), 
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
                 0 0 2px 0 rgba(0,0,0,.2);
 }
 
@@ -60,7 +64,7 @@ head, body {
 
 .menu-block button:hover {
     transition: box-shadow 0.2s ease-in-out;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,.18), 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.18),
                 0 0 2px 0 rgba(0,0,0,.2);
 }
 

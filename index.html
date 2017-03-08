@@ -8,19 +8,30 @@
         <title>Drop The Code - CS 386</title>
     </head>
     <body>
-        <div id="back" class="back-button" onclick="changePage('back')">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-        </div>
         <div class="main-container">
+            <div id="back" class="back-button center-align" onclick="changePage('back')">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </div>
             <div data-page="home" class="page">
                 <div class="menu-block">
                     <div class="title">Drop The Code</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('login')">Login</button>
+                    <button onclick="changePage('user-login')">Login</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('guest-login')">Guest</button>
                 </div>
             </div>
-            <div data-page="login" class="page">
+            <div data-page="guest-login" class="page">
+                <div class="menu-block">
+                    <div class="title">Logged in as Guest</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('main')">Continue</button>
+                </div>
+            </div>
+            <div data-page="user-login" class="page">
                 <div class="menu-block">
                     <input data-clear="true" value="User Name" />
                 </div>
@@ -36,16 +47,21 @@
                     <div class="title">Drop The Code</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('levels')">Single Player</button>
+                    <button onclick="changePage('nothing')">Single Player</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('levels')">Multiplayer</button>
+                    <button onclick="changePage('nothing')">Multiplayer</button>
                 </div>
+                <hr>
                 <div class="menu-block">
                     <button onclick="changePage('settings')">Settings</button>
                 </div>
+                <hr>
+                <div class="menu-block">
+                    <button onclick="changePage('logout')">Logout</button>
+                </div>
             </div>
-            <div data-page="settings" class="page">
+                <div data-page="settings" class="page">
                 <div class="menu-block">
                     <div class="title">Choose a Setting</div>
                 </div>
@@ -54,9 +70,6 @@
                 </div>
                 <div class="menu-block">
                     <button onclick="changePage('nothing')">Sound</button>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('home')">Logout</button>
                 </div>
             </div>
             <div data-page="difficulty" class="page">
@@ -78,7 +91,7 @@
                     <div class="title">Difficulty Level Chosen!</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('settings')">Return</button>
+                    <button onclick="changePage('back')">Return</button>
                 </div>
             </div>
             <div data-page="nothing" class="page">
@@ -86,30 +99,15 @@
                     <div class="title">Nothing</div>
                 </div>
             </div>
-             <div data-page ="levels" class ="page">
-                <div class ="menu-block">
-                    <div class ="title">Choose a level</div>
-                </div>
-                 <div class="menu-block">
-                    <button onclick="changePage('levelSelect')">Level 1</button>
-                </div>
+            <div data-page="logout" class="page">
                 <div class="menu-block">
-                    <button onclick="changePage('levelSelect')">Level 2</button>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('levelSelect')">Level 3</button>
-                </div>
-            </div>
-            <div data-page="levelSelect" class="page">
-                <div class="menu-block">
-                    <div class="title">Level Chosen!</div>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('levels')">Return</button>
+                    <div class="title">Logging out...</div>
                 </div>
             </div>
 
         </div>
+        <script type="text/javascript" src="js/classes.js"></script>
         <script type="text/javascript" src="js/menus.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
