@@ -70,7 +70,7 @@ class ScreenContainer
     onReturn() {} // called when the screen gets control back from a child
 }
 
-class LoadScreen
+class LoadScreen extends ScreenContainer
 {
     constructor()
     {
