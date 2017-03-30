@@ -86,13 +86,4 @@ function changePage(toPage) {
 }
 
 
-// Add event listeners to all inputs
-[].slice.call(document.querySelectorAll('[data-clear]')).forEach((input) => {
-	let value = input.value;
-	input.onfocus = (e) => {
-		if (e.target.value == value) e.target.value = "";
-	}
-	input.onblur = (e) => {
-		if (!e.target.value) e.target.value = value;
-	}
-});
+

@@ -17,18 +17,13 @@
                     <div class="title">Drop The Code</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('user-login')">Login</button>
+                    <button onclick="changePage('user-login')">User Login</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('guest-login')">Guest</button>
-                </div>
-            </div>
-            <div data-page="guest-login" class="page">
-                <div class="menu-block">
-                    <div class="title">Logged in as Guest</div>
+                    <button onclick="changePage('guest-login')">Guest Login</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('main')">Continue</button>
+                    <button onclick="changePage('teacher-login')">Teacher Login</button>
                 </div>
             </div>
             <div data-page="user-login" class="page">
@@ -40,6 +35,73 @@
                 </div>
                 <div class="menu-block">
                     <button onclick="changePage('main')">Login</button>
+                </div>
+            </div>
+            <div data-page="guest-login" class="page">
+                <div class="menu-block">
+                    <div class="title">Logged in as a Guest</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('main')">Continue</button>
+                </div>
+            </div>
+            <div data-page="teacher-login" class="page">
+                <div class="menu-block">
+                    <div class="title">Teacher Options</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('view-students')">View Students</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('assign-students')">Assign Students</button>
+                </div>
+            </div>
+            <div data-page="view-students" class="page">
+                <div class="menu-block">
+                    <div class="title">All Students</div>
+                </div>
+                <div class="menu-block">
+                    <div class="content">Aeron Benjy</div>
+                </div>
+                <div class="menu-block">
+                    <div class="content">Dominik Zuriel</div>
+                </div>
+                <div class="menu-block">
+                    <div class="content">Matthias Iosif</div>
+                </div>
+                <div class="menu-block">
+                    <div class="content">Geghard Alin</div>
+                </div>
+            </div>
+            <div data-page="assign-students" class="page">
+                <div class="menu-block">
+                    <div class="title">Choose Student</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('level-assign')">Aeron Benjy</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('level-assign')">Dominik Zuriel</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('level-assign')">Matthias Iosif</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('level-assign')">Geghard Alin</button>
+                </div>
+            </div>
+            <div data-page="level-assign" class="page">
+                <div class="menu-block">
+                    <div class="title">Choose Level</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('back')">Level 1</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('back')">Level 2</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('back')">Level 3</button>
                 </div>
             </div>
             <div data-page="main" class="page">

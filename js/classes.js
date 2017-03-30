@@ -2,7 +2,6 @@ class GameManager
 {
     constructor()
     {
-        this.users = [];
         this.screenmanager = new ScreenManager();
     }
 
@@ -11,7 +10,6 @@ class GameManager
         this.screenmanager.draw();
     }
 }
-
 
 class ScreenManager
 {
@@ -22,15 +20,14 @@ class ScreenManager
         this._settings = null;
     }
 
+    get root()
+    {
+        return this._rootScreen;
+    }
     set root(r)
     {
         this._rootScreen = r;
         this._topScreen = r;
-    }
-
-    get root()
-    {
-        return this._rootScreen;
     }
 
     set topScreen(r)
