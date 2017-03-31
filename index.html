@@ -64,16 +64,40 @@
                     <div class="title">All Students</div>
                 </div>
                 <div class="menu-block">
-                    <div class="content">Aeron Benjy</div>
+                    <button onclick="changePage('levels-complete')">Aeron Benjy</button>
                 </div>
                 <div class="menu-block">
-                    <div class="content">Dominik Zuriel</div>
+                    <button onclick="changePage('levels-complete')">Dominik Zuriel</button>
                 </div>
                 <div class="menu-block">
-                    <div class="content">Matthias Iosif</div>
+                    <button onclick="changePage('levels-complete')">Matthias Iosif</button>
                 </div>
                 <div class="menu-block">
-                    <div class="content">Geghard Alin</div>
+                    <button onclick="changePage('levels-complete')">Geghard Alin</button>
+                </div>
+            </div>
+            <div data-page="levels-complete" class="page">
+                <div class="menu-block">
+                    <div class="title">Check for completion</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('completed')">Level 1</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('not-completed')">Level 2</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('completed')">Level 3</button>
+                </div>
+            </div>
+            <div data-page="completed" class="page">
+                <div class="menu-block">
+                    <div class="title">Completed!</div>
+                </div>
+            </div>
+            <div data-page="not-completed" class="page">
+                <div class="menu-block">
+                    <div class="title">Not Completed!</div>
                 </div>
             </div>
             <div data-page="assign-students" class="page">
