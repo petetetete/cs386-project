@@ -55,6 +55,9 @@
                 <div class="menu-block">
                     <button onclick="changePage('assign-students')">Assign Students</button>
                 </div>
+                <div class="menu-block">
+                    <button onclick="changePage('remind-students')">Send Reminders</button>
+                </div>
             </div>
             <div data-page="view-students" class="page">
                 <div class="menu-block">
@@ -180,8 +183,52 @@
                     <div class="title">Logging out...</div>
                 </div>
             </div>
-
-        </div>
+            <div data-page="remind-students" class="page">
+                <div class="menu-block">
+                    <div class="title">Which Student?</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('reminder-format')">Aeron Benjy</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('reminder-format')">Dominik Zuriel</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('reminder-format')">Matthias Iosif</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('reminder-format')">Geghard Alin</button>
+                </div>
+            </div>
+            <div data-page="reminder-format" class="page">
+                <div class="menu-block">
+                    <div class="title">Choose Format</div>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('emailpage')">Send E-mail</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('pushnotification')">Send Push Notification</button>
+                </div>
+            </div>
+            <div data-page="emailpage" class="page">
+                <div class="menu-block">
+                    <input data-clear="true" value="Student E-mail" />
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('email-sent-page')">Send</button>
+                </div>
+            </div>
+            <div data-page="email-sent-page" class="page">
+                <div class="menu-block">
+                    <div class="title">E-mail Sent!</div>
+                </div>
+            </div>
+            <div data-page="pushnotification" class="page">
+                <div class="menu-block">
+                    <div class="title">Student Notified</div>
+                </div>
+            </div>
         <script type="text/javascript" src="js/classes.js"></script>
         <script type="text/javascript" src="js/menus.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
