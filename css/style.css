@@ -8,21 +8,16 @@ head, body {
     z-index: 1;
     color: #fff;
     font-size: 4em;
-    position: fixed;
-    cursor: pointer;
-    top: 2px; left: 10px;
+    margin-right: 20px;
 }
 
 .main-container {
     position: absolute;
     top: 0; left: 0;
-    box-sizing: border-box;
-    padding: 5px;
 
     display: flex;
     width: 100%;
     height: 100%;
-    overflow: auto;
 
     background-color: #03A9F4;
 
@@ -33,11 +28,6 @@ head, body {
     display: none;
     flex-direction: column;
     justify-content: center;
-}
-@media screen and (max-height: 600px){
-    .page {
-        justify-content: flex-start;
-    }
 }
 
 .center-align {
@@ -83,24 +73,11 @@ head, body {
     font-size: 3em;
 }
 
-.content {
-    background-color: #eee;
-    color: #000;
-    font-size: 2em;
-}
-
 .menu-block input {
     border: none;
     display: block;
     background-color: #B3E5FC;
     font-size: 2em;
     text-align: center;
-    color: rgba(0,0,0,.5);
-}
-
-hr {
-    border: none;
-    border-bottom: 1px solid rgba(255,255,255,.5);
-    width: 100%;
-    margin: 7px 0;
+    color: #222;
 }

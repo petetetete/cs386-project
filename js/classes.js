@@ -2,6 +2,7 @@ class GameManager
 {
     constructor()
     {
+        this.users = [];
         this.screenmanager = new ScreenManager();
     }
 
@@ -9,7 +10,30 @@ class GameManager
     {
         this.screenmanager.draw();
     }
+
+    addUser(user)
+    {
+        this.users.push(user);
+    }
+
+    removeUser(id)
+    {
+        for(var i in this.users)
+        {
+            if(this.users[i] == id || this.users[i].id == id || this.users[i].username == id)
+            {
+                this.users.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    getUser()
+    {
+        return this.users[this.users.length - 1];
+    }
 }
+
 
 class ScreenManager
 {
@@ -20,14 +44,20 @@ class ScreenManager
         this._settings = null;
     }
 
-    get root()
-    {
-        return this._rootScreen;
-    }
     set root(r)
     {
         this._rootScreen = r;
         this._topScreen = r;
+    }
+
+    get root()
+    {
+        return this._rootScreen;
+    }
+
+    get topScreen()
+    {
+        return this._topScreen;
     }
 
     set topScreen(r)
@@ -56,6 +86,16 @@ class ScreenManager
         }
     }
 
+    backUpTo(cls)
+    {
+        while(this._topScreen != null && !(this._topScreen.parent instanceof cls))
+        {
+            this._topScreen.close();
+            this._topScreen = this._topScreen.parent;
+        }
+        this.close();
+    }
+
     draw()
     {
         this._topScreen.draw();
@@ -65,10 +105,9 @@ class ScreenManager
 // NOTE: this class should be subclassed
 class ScreenContainer
 {
-    constructor(state = null, name = null)
+    constructor(name = null)
     {
         this._parent = null
-        this._state = state;
         this._name = name;
     }
 
@@ -81,47 +120,37 @@ class ScreenContainer
         return this._parent;
     }
 
-    // this screen will not be displayed anymore after this function ends,
-    // so keep that in mind
-    close()
+    set name(n)
     {
-        if(this._state != null)
-            this._state.close(); // clean up the state
+        this._name = n;
     }
 
-    start()
+    get name()
     {
-        if(this._state != null)
-            this._state.start(); // clean up the state
+        return this._name;
     }
 
-    restart() {
-        if(this._state != null)
-            this._state.restart(); // get state back into running shape
-    } // called when the screen gets control back from a child
-
-    pause() {
-        if(this._state != null)
-            this._state.pause();
-    }
-
-    draw() {
-        if(this._state != null)
-            this._state.draw();
-    }
-}
-
-
-class State
-{
-    constructor(){
-        //this.bb = new Blackboard();
+    back()
+    {
+        return true;
     }
 
     // events
     // NOTE: these need to be implemented in subclasses
     close() {}
     start() {}
-    restart() {}
+    restart() {
+        this.start();
+    }
     pause() {}
+    draw() {}
+}
+
+class User
+{
+    constructor()
+    {
+        this.username = null;
+        this.id = null;
+    }
 }

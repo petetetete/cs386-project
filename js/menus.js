@@ -1,9 +1,16 @@
 
 class MainMenuScreen extends ScreenContainer
 {
-    constructor(mmname)
+    constructor(menuName)
     {
-        super(new MainMenuState(mmname), "menu");
+        super();
+        this.menuName = menuName;
+
+        this.no_backtrack_menus = {
+            "difficulty" : 1,
+            "guest-login" : 1,
+            "user-login" : 1
+        }
     }
 
     start()
@@ -13,7 +20,7 @@ class MainMenuScreen extends ScreenContainer
         var pages = [].slice.call(document.getElementsByClassName("page"));
     	// Hide all other pages
     	pages.forEach((page) => {
-    		if (page.dataset.page == this._state.menuName) {
+    		if (page.dataset.page == this.menuName) {
     			page.style.display = "flex";
     		}
     		else {
@@ -33,47 +40,12 @@ class MainMenuScreen extends ScreenContainer
 
     restart()
     {
-        super.restart();
-
-        if(this._state.no_backtrack_menus[this._state.menuName] === undefined)
+        if(this.no_backtrack_menus[this.menuName] === undefined)
             this.start();
-    }
-}
-
-class MainMenuState extends State {
-    constructor(menuName)
-    {
-        super();
-        this.menuName = menuName;
-
-        this.no_backtrack_menus = {
-            "difficulty" : 1,
-            "guest-login" : 1,
-            "user-login" : 1
-        }
-    }
-
-    // for when this state is first created
-    start()
-    {
-        if(this.menuName == "logout")
-        {
-            setTimeout(() => {
-                GM.screenmanager.closeAll();
-            }, 1000);
-        }
-    }
-    
-    // for when the user clicked the back button and ended up here
-    restart()
-    {
-        // we don't need the menu again so back up one more
-        if(this.no_backtrack_menus[this.menuName] !== undefined)
+        else
             GM.screenmanager.close();
     }
-
 }
-
 
 function changePage(toPage) {
 	// If navigating back
@@ -84,6 +56,3 @@ function changePage(toPage) {
 		GM.screenmanager.topScreen = new MainMenuScreen(toPage);
 	}
 }
-
-
-
