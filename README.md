@@ -15,4 +15,4 @@ A group project for Software Engineering describing and implementing an introduc
 #### Releases
 
 * Release 1 - [PDF](deliverables/D3.1-group-14.pdf), [Word](deliverables/D3.1-group-14.docx)
-* Release 2 - PDF (Made on completion of document), [Word](deliverables/D3.2-group-14.docx)
+* Release 2 - [PDF](deliverables/D3.1-group-14.pdf), [Word](deliverables/D3.2-group-14.docx)
