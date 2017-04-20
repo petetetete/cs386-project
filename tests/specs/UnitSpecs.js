@@ -19,6 +19,8 @@ describe("Menu Navigation", function() {
 
         expect(testGM.screenmanager.topScreen.menuName).toEqual("home");
     });
+
+    // Add a few menu navigation tests (make sure to check them with the html file)
 });
 
 describe("User Management", function() {
@@ -38,6 +40,13 @@ describe("User Management", function() {
         expect(testGM.users.length).toEqual(1);
     });
 
+    it("should initialize a users id correctly", function() {
+        var testUser = new User(42);
+        testGM.addUser(testUser);
+
+        expect(testGM.getUser(42).id).toEqual(42);
+    });
+
     it("should be able to remove a user", function() {
         var testUser1 = new User(1);
         var testUser2 = new User(2);
@@ -47,4 +56,4 @@ describe("User Management", function() {
 
         expect(testGM.users.length).toEqual(1);
     });
-})
+});
