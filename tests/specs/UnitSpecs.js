@@ -20,6 +20,7 @@ describe("Menu Navigation", function() {
         expect(testGM.screenmanager.topScreen.menuName).toEqual("home");
     });
 
+<<<<<<< HEAD
     it("should be able to navigate from home screen to guest login", function(){
         testGM.screenmanager.changePage("guest-login");
         expect(testGM.screenmanager.topScreen.menuName).toEqual("guest-login");
@@ -34,6 +35,9 @@ describe("Menu Navigation", function() {
         testGM.screenmanager.changePage("creator-login");
         expect(testGM.screenmanager.topScreen.menuName).toEqual("creator-login");
     });
+=======
+    // Add a few menu navigation tests (make sure to check them with the html file)
+>>>>>>> 7845797a79982ed22e04c9932c471a10f2315114
 });
 
 describe("User Management", function() {
@@ -46,11 +50,18 @@ describe("User Management", function() {
         testGM.screenmanager.root.start();
     });
 
-    it("should be able to add a user", function() {
+    it("should be able to add a new user", function() {
         var testUser = new User(5);
         testGM.addUser(testUser);
 
         expect(testGM.users.length).toEqual(1);
+    });
+
+    it("should initialize a user's id correctly", function() {
+        var testUser = new User(42);
+        testGM.addUser(testUser);
+
+        expect(testGM.getUser(42).id).toEqual(42);
     });
 
     it("should be able to remove a user", function() {
@@ -62,4 +73,34 @@ describe("User Management", function() {
 
         expect(testGM.users.length).toEqual(1);
     });
-})
+});
+
+describe("Menu Management", function(){
+
+    var testGM;
+
+    beforeEach(function() {
+        testGM = new GameManager();
+        testGM.screenmanager.root = new MainMenuScreen("home");
+        testGM.screenmanager.root.start();
+
+    it("should be able to start a single player game", function(){
+        testGM.screenmanager.changePage("levels");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
+    });
+
+    it("should be able to start a multiplayer player game", function(){
+    testGM.screenmanager.changePage("levels");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
+    });
+
+    it("should be able to go to settings", function(){
+    testGM.screenmanager.changePage("settings");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("settings");
+    });
+
+    it("should be able to logout", function(){
+        testGM.screenmanager.changePage("logout");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("logout");
+    });
+});

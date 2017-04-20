@@ -24,9 +24,9 @@ class GameManager
         }
     }
 
-    getUser()
+    getUser(id)
     {
-        return this.users[this.users.length - 1];
+        return this.users.find(user => user.id == id);
     }
 }
 
