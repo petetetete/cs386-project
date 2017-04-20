@@ -21,4 +21,4 @@ A group project for Software Engineering describing and implementing an introduc
 #### Testing Results
 
 * [Unit Tests](https://petetetete.github.io/cs386-project/tests/UnitTests)
-* [Acceptance Tests](https://petetetete.github.io/cs386-project/tests/UnitTests)
+* [Acceptance Tests](https://petetetete.github.io/cs386-project/tests/AcceptanceTests)

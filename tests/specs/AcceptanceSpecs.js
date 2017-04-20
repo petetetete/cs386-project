@@ -12,7 +12,7 @@ describe("Feature Checks", function() {
         expect(testUser).toBeDefined();
     });
 
-    it("should have main menu screens", function() {
+    it("should have main menu screen functionality", function() {
         var testScreen = new MainMenuScreen();
 
         expect(testScreen).toBeDefined();

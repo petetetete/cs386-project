@@ -33,14 +33,14 @@ describe("User Management", function() {
         testGM.screenmanager.root.start();
     });
 
-    it("should be able to add a user", function() {
+    it("should be able to add a new user", function() {
         var testUser = new User(5);
         testGM.addUser(testUser);
 
         expect(testGM.users.length).toEqual(1);
     });
 
-    it("should initialize a users id correctly", function() {
+    it("should initialize a user's id correctly", function() {
         var testUser = new User(42);
         testGM.addUser(testUser);
 
