@@ -19,6 +19,21 @@ describe("Menu Navigation", function() {
 
         expect(testGM.screenmanager.topScreen.menuName).toEqual("home");
     });
+
+    it("should be able to navigate from home screen to guest login", function(){
+        testGM.screenmanager.changePage("guest-login");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("guest-login");
+    });
+
+    it("should be able to navigate from home screen to teacher login", function(){
+        testGM.screenmanager.changePage("teacher-login");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("teacher-login");
+    });
+
+    it("should be able to navigate from home screen to creator login", function(){
+        testGM.screenmanager.changePage("creator-login");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("creator-login");
+    });
 });
 
 describe("User Management", function() {
