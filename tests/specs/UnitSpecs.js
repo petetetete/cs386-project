@@ -74,33 +74,3 @@ describe("User Management", function() {
         expect(testGM.users.length).toEqual(1);
     });
 });
-
-describe("Menu Management", function(){
-
-    var testGM;
-
-    beforeEach(function() {
-        testGM = new GameManager();
-        testGM.screenmanager.root = new MainMenuScreen("home");
-        testGM.screenmanager.root.start();
-
-    it("should be able to start a single player game", function(){
-        testGM.screenmanager.changePage("levels");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
-    });
-
-    it("should be able to start a multiplayer player game", function(){
-    testGM.screenmanager.changePage("levels");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
-    });
-
-    it("should be able to go to settings", function(){
-    testGM.screenmanager.changePage("settings");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("settings");
-    });
-
-    it("should be able to logout", function(){
-        testGM.screenmanager.changePage("logout");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("logout");
-    });
-});
