@@ -72,7 +72,7 @@ describe("User Management", function() {
     });
 });
 
-describe("In Game Menu Management", function(){
+describe("In Game Menu Navigation", function(){
  
     var testGM;
 
