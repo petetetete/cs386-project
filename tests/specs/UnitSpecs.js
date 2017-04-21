@@ -20,7 +20,6 @@ describe("Menu Navigation", function() {
         expect(testGM.screenmanager.topScreen.menuName).toEqual("home");
     });
 
-<<<<<<< HEAD
     it("should be able to navigate from home screen to guest login", function(){
         testGM.screenmanager.changePage("guest-login");
         expect(testGM.screenmanager.topScreen.menuName).toEqual("guest-login");
@@ -35,9 +34,7 @@ describe("Menu Navigation", function() {
         testGM.screenmanager.changePage("creator-login");
         expect(testGM.screenmanager.topScreen.menuName).toEqual("creator-login");
     });
-=======
-    // Add a few menu navigation tests (make sure to check them with the html file)
->>>>>>> 7845797a79982ed22e04c9932c471a10f2315114
+    
 });
 
 describe("User Management", function() {
