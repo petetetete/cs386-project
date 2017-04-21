@@ -88,13 +88,13 @@ describe("In Game Menu Navigation", function(){
     });
 
     it("should be able to start a multiplayer player game", function(){
-        testGM.screenmanager.changePage("levels");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
+    testGM.screenmanager.changePage("levels");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
     });
 
     it("should be able to go to settings", function(){
-        testGM.screenmanager.changePage("settings");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("settings");
+    testGM.screenmanager.changePage("settings");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("settings");
     });
 
     it("should be able to logout", function(){
@@ -113,20 +113,42 @@ describe("Teacher Options Menu Navigation", function(){
         testGM.screenmanager.root.start();
     });
 
-    it("should be able to navigate to view students", function(){
+    it("should be able to navigate to the list of student names", function(){
         testGM.screenmanager.changePage("view-students");
         expect(testGM.screenmanager.topScreen.menuName).toEqual("view-students");
     });
 
     it("should be able to navigate to assign students page", function(){
-        testGM.screenmanager.changePage("assign-students");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("assign-students");
+    testGM.screenmanager.changePage("assign-students");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("assign-students");
     });
 
-    it("should be able to navigate to send reminders", function(){
-        testGM.screenmanager.changePage("send-reminders");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("send-reminders");
+    it("should be able navigate to remind student page ", function(){
+    testGM.screenmanager.changePage("send-reminder");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("send-reminder");
     });
 
 });
 
+describe("Settings Menu Navigation", function(){
+ 
+    var testGM;
+
+    beforeEach(function() {
+        testGM = new GameManager();
+        testGM.screenmanager.root = new MainMenuScreen("home");
+        testGM.screenmanager.root.start();
+    });
+
+    it("should be able to navigate difficulty page", function(){
+        testGM.screenmanager.changePage("chosen");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("chosen");
+    });
+
+    it("should be able to navigate to sound page", function(){
+    testGM.screenmanager.changePage("nothing");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("nothing");
+    });
+
+
+});
