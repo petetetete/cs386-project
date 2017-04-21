@@ -102,3 +102,31 @@ describe("In Game Menu Navigation", function(){
         expect(testGM.screenmanager.topScreen.menuName).toEqual("logout");
     });
 });
+
+describe("Teacher options Navigation", function(){
+
+    var testGM;
+
+    beforeEach(function() {
+        testGM = new GameManager();
+        testGM.screenmanager.root = new MainMenuScreen("home");
+        testGM.screenmanager.root.start();
+    });
+
+    it("should be able to navigate to view students", function(){
+    testGM.screenmanager.changePage("view-students");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("view-students");
+    });
+
+    it("should be able to navigate to assign students", function(){
+    testGM.screenmanager.changePage("assign-students");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("assign-students");
+    });
+
+    it("should be able to navigate to send reminders", function(){
+    testGM.screenmanager.changePage("send-reminders");
+    expect(testGM.screenmanager.topScreen.menuName).toEqual("send-reminders");
+    });
+
+
+})
