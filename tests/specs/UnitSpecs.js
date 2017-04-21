@@ -88,13 +88,13 @@ describe("In Game Menu Navigation", function(){
     });
 
     it("should be able to start a multiplayer player game", function(){
-    testGM.screenmanager.changePage("levels");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
+        testGM.screenmanager.changePage("levels");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
     });
 
     it("should be able to go to settings", function(){
-    testGM.screenmanager.changePage("settings");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("settings");
+        testGM.screenmanager.changePage("settings");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("settings");
     });
 
     it("should be able to logout", function(){
@@ -103,8 +103,8 @@ describe("In Game Menu Navigation", function(){
     });
 });
 
-describe("Teacher options Navigation", function(){
-
+describe("Teacher Options Menu Navigation", function(){
+ 
     var testGM;
 
     beforeEach(function() {
@@ -114,19 +114,19 @@ describe("Teacher options Navigation", function(){
     });
 
     it("should be able to navigate to view students", function(){
-    testGM.screenmanager.changePage("view-students");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("view-students");
+        testGM.screenmanager.changePage("view-students");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("view-students");
     });
 
-    it("should be able to navigate to assign students", function(){
-    testGM.screenmanager.changePage("assign-students");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("assign-students");
+    it("should be able to navigate to assign students page", function(){
+        testGM.screenmanager.changePage("assign-students");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("assign-students");
     });
 
     it("should be able to navigate to send reminders", function(){
-    testGM.screenmanager.changePage("send-reminders");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("send-reminders");
+        testGM.screenmanager.changePage("send-reminders");
+        expect(testGM.screenmanager.topScreen.menuName).toEqual("send-reminders");
     });
 
+});
 
-})
