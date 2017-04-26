@@ -11,7 +11,8 @@ A group project for Software Engineering describing and implementing an introduc
 * User Stories - [PDF](deliverables/D2.3-group-14.pdf), [Word](deliverables/D2.3-group-14.docx)
 * Class Diagram - [PDF](deliverables/D4-group-14.pdf), [Word](deliverables/D4-group-14.docx)
 * Internal Design - [PDF](deliverables/D5-group-14.pdf), [Word](deliverables/D5-group-14.docx)
-* Automated Testing - PDF (Made on completion of document), [Word](deliverables/D6.1-group-14.docx)
+* Automated Testing - [PDF](deliverables/D6.1-group-14.pdf), [Word](deliverables/D6.1-group-14.docx)
+* User Evaluations - PDF (Made on completion of document), [Word](deliverables/D6.2-group-14.docx)
 
 #### Releases
 
