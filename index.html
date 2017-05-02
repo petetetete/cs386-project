@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <title>Drop The Code - CS 386</title>
     </head>
     <body>
         <div class="main-container">
-            <div id="back" class="back-button center-align" onclick="GM.screenmanager.changePage('back')">
+            <div id="back" class="back-button center-align" onclick="changePage('back')">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </div>
             <div data-page="home" class="page">
@@ -17,16 +17,16 @@
                     <div class="title">Drop The Code</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('user-login')">User Login</button>
+                    <button onclick="changePage('user-login')">User Login</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('guest-login')">Guest Login</button>
+                    <button onclick="changePage('guest-login')">Guest Login</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('teacher-login')">Teacher Login</button>
+                    <button onclick="changePage('teacher-login')">Teacher Login</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('creator-login')">Creator Login</button>
+                    <button onclick="changePage('creator-login')">Creator Login</button>
                 </div>
             </div>
             <div data-page="user-login" class="page">
@@ -37,7 +37,7 @@
                     <input data-clear="true" value="Password" />
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('main')">Login</button>
+                    <button onclick="changePage('main')">Login</button>
                 </div>
             </div>
             <div data-page="guest-login" class="page">
@@ -45,7 +45,7 @@
                     <div class="title">Logged in as a Guest</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('main')">Continue</button>
+                    <button onclick="changePage('main')">Continue</button>
                 </div>
             </div>
             <div data-page="teacher-login" class="page">
@@ -53,13 +53,13 @@
                     <div class="title">Teacher Options</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('view-students')">View Students</button>
+                    <button onclick="changePage('view-students')">View Students</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('assign-students')">Assign Students</button>
+                    <button onclick="changePage('assign-students')">Assign Students</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('remind-students')">Send Reminders</button>
+                    <button onclick="changePage('remind-students')">Send Reminders</button>
                 </div>
             </div>
             <div data-page="view-students" class="page">
@@ -67,16 +67,16 @@
                     <div class="title">All Students</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levels-complete')">Aeron Benjy</button>
+                    <button onclick="changePage('levels-complete')">Aeron Benjy</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levels-complete')">Dominik Zuriel</button>
+                    <button onclick="changePage('levels-complete')">Dominik Zuriel</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levels-complete')">Matthias Iosif</button>
+                    <button onclick="changePage('levels-complete')">Matthias Iosif</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levels-complete')">Geghard Alin</button>
+                    <button onclick="changePage('levels-complete')">Geghard Alin</button>
                 </div>
             </div>
             <div data-page="levels-complete" class="page">
@@ -84,13 +84,17 @@
                     <div class="title">Check for completion</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('completed')">Level 1</button>
+                    <button onclick="changePage('game', 1)">Level 1</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('not-completed')">Level 2</button>
+                    <button onclick="changePage('game', 2)">Level 2</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('completed')">Level 3</button>
+                    <button onclick="changePage('game', 3)">Level 3</button>
+                </div>
+            </div>
+            <div data-page="game" class="page">
+                <div class="game-container">
                 </div>
             </div>
             <div data-page="completed" class="page">
@@ -108,16 +112,16 @@
                     <div class="title">Choose Student</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('level-assign')">Aeron Benjy</button>
+                    <button onclick="changePage('level-assign')">Aeron Benjy</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('level-assign')">Dominik Zuriel</button>
+                    <button onclick="changePage('level-assign')">Dominik Zuriel</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('level-assign')">Matthias Iosif</button>
+                    <button onclick="changePage('level-assign')">Matthias Iosif</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('level-assign')">Geghard Alin</button>
+                    <button onclick="changePage('level-assign')">Geghard Alin</button>
                 </div>
             </div>
             <div data-page="level-assign" class="page">
@@ -125,13 +129,13 @@
                     <div class="title">Choose Level</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('back')">Level 1</button>
+                    <button onclick="changePage('back')">Level 1</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('back')">Level 2</button>
+                    <button onclick="changePage('back')">Level 2</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('back')">Level 3</button>
+                    <button onclick="changePage('back')">Level 3</button>
                 </div>
             </div>
             <div data-page="main" class="page">
@@ -139,18 +143,18 @@
                     <div class="title">Drop The Code</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levels')">Single Player</button>
+                    <button onclick="changePage('levels')">Single Player</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levels')">Multiplayer</button>
-                </div>
-                <hr>
-                <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('settings')">Settings</button>
+                    <button onclick="changePage('levels')">Multiplayer</button>
                 </div>
                 <hr>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('logout')">Logout</button>
+                    <button onclick="changePage('settings')">Settings</button>
+                </div>
+                <hr>
+                <div class="menu-block">
+                    <button onclick="changePage('logout')">Logout</button>
                 </div>
             </div>
                 <div data-page="settings" class="page">
@@ -158,10 +162,10 @@
                     <div class="title">Choose a Setting</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('difficulty')">Change Difficulty</button>
+                    <button onclick="changePage('difficulty')">Change Difficulty</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('nothing')">Sound</button>
+                    <button onclick="changePage('nothing')">Sound</button>
                 </div>
             </div>
             <div data-page="difficulty" class="page">
@@ -169,27 +173,30 @@
                     <div class="title">Choose a Difficulty</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('chosen')">Beginner</button>
+                    <button onclick="changePage('chosen')">Beginner</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('chosen')">Intermediate</button>
+                    <button onclick="changePage('chosen')">Intermediate</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('chosen')">Expert</button>
+                    <button onclick="changePage('chosen')">Expert</button>
                 </div>
             </div>
-             <div data-page ="levels" class ="page">
-                <div class ="menu-block">
-                    <div class ="title">Choose a level</div>
-                </div>
-                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levelSelect')">Level 1</button>
+            <div data-page="levels" class="page">
+                <div class="menu-block">
+                    <div class="title">Choose A Level</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levelSelect')">Level 2</button>
+                    <button onclick="changePage('game', 1)">Level 1</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('levelSelect')">Level 3</button>
+                    <button onclick="changePage('game', 2)">Level 2</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('game', 3)">Level 3</button>
+                </div>
+                <div class="menu-block">
+                    <button onclick="changePage('game', 4)">Level 4</button>
                 </div>
             </div>
             <div data-page="chosen" class="page">
@@ -197,7 +204,7 @@
                     <div class="title">Difficulty Level Chosen!</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('back')">Return</button>
+                    <button onclick="changePage('back')">Return</button>
                 </div>
             </div>
             <div data-page="nothing" class="page">
@@ -215,16 +222,16 @@
                     <div class="title">Which Student?</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('reminder-format')">Aeron Benjy</button>
+                    <button onclick="changePage('reminder-format')">Aeron Benjy</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('reminder-format')">Dominik Zuriel</button>
+                    <button onclick="changePage('reminder-format')">Dominik Zuriel</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('reminder-format')">Matthias Iosif</button>
+                    <button onclick="changePage('reminder-format')">Matthias Iosif</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('reminder-format')">Geghard Alin</button>
+                    <button onclick="changePage('reminder-format')">Geghard Alin</button>
                 </div>
             </div>
             <div data-page="reminder-format" class="page">
@@ -232,10 +239,10 @@
                     <div class="title">Choose Format</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('emailpage')">Send E-mail</button>
+                    <button onclick="changePage('emailpage')">Send E-mail</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('pushnotification')">Send Push Notification</button>
+                    <button onclick="changePage('pushnotification')">Send Push Notification</button>
                 </div>
             </div>
             <div data-page="emailpage" class="page">
@@ -243,7 +250,7 @@
                     <input data-clear="true" value="Student E-mail" />
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('email-sent-page')">Send</button>
+                    <button onclick="changePage('email-sent-page')">Send</button>
                 </div>
             </div>
             <div data-page="email-sent-page" class="page">
@@ -261,10 +268,10 @@
                     <div class="title">Welcome Creator</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('create-puzzle')">Create Puzzle</button>
+                    <button onclick="changePage('create-puzzle')">Create Puzzle</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="GM.screenmanager.changePage('view-puzzles')">View Created Puzzles</button>
+                    <button onclick="changePage('view-puzzles')">View Created Puzzles</button>
                 </div>
             </div>
             <div data-page="create-puzzle" class="page">
@@ -277,8 +284,10 @@
                     <div class="title">Display previous puzzles here...</div>
                 </div>
             </div>
-        <script type="text/javascript" src="src/js/classes.js"></script>
-        <script type="text/javascript" src="src/js/menus.js"></script>
-        <script type="text/javascript" src="src/js/main.js"></script>
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/classes.js"></script>
+        <script type="text/javascript" src="js/menus.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/game.js"></script>
     </body>
 </html>
