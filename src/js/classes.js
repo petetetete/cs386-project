@@ -18,15 +18,19 @@ class GameManager
 
     removeUser(id)
     {
-        let toRemove = this.users.findIndex(user => user.id == id);
-        if (toRemove != -1) {
-            this.users.splice(toRemove, 1);
+        for(var i in this.users)
+        {
+            if(this.users[i] == id || this.users[i].id == id || this.users[i].username == id)
+            {
+                this.users.splice(i, 1);
+                break;
+            }
         }
     }
 
-    getUser(id)
+    getUser()
     {
-        return this.users.find(user => user.id == id);
+        return this.users[this.users.length - 1];
     }
 }
 
@@ -58,9 +62,8 @@ class ScreenManager
 
     set topScreen(r)
     {
-        if(this._topScreen != null) {
+        if(this._topScreen != null)
             r.parent = this._topScreen;
-        }
         this._topScreen.pause();
         this._topScreen = r;
         r.start();
@@ -78,10 +81,8 @@ class ScreenManager
         {
             this._topScreen.close();
             this._topScreen = this._topScreen.parent;
-
-            if(this._topScreen != null) {
+            if(this._topScreen != null)
                 this._topScreen.restart();
-            }
         }
     }
 
@@ -98,17 +99,6 @@ class ScreenManager
     draw()
     {
         this._topScreen.draw();
-    }
-
-    changePage(toPage)
-    {
-        // If navigating back
-        if (toPage == "back") {
-            this.close();
-        }
-        else {
-            this.topScreen = new MainMenuScreen(toPage);
-        }
     }
 }
 
@@ -158,9 +148,9 @@ class ScreenContainer
 
 class User
 {
-    constructor(id)
+    constructor()
     {
         this.username = null;
-        this.id = id;
+        this.id = null;
     }
 }
