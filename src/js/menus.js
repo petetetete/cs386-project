@@ -107,6 +107,9 @@ class GameScreen extends ScreenContainer {
         this.switchflag = null;
         this.switchflag_decay = 0;
 
+        this.step_count = 0;
+        this.speed = 200;
+
         $(".board-container").html(displayBoard(this.tempboard));
         this.DoStep();
 
@@ -298,10 +301,8 @@ class GameScreen extends ScreenContainer {
         this.tracker[0] += result[0];
         this.tracker[1] += result[1];
 
-
         // check for end of program
-
-        if(this.players.length == 0 || this.goals.length == 0 || this.tracker[1] >= this.solution[this.tracker[0]].length)
+        if(this.step_count >= 100 || this.players.length == 0 || this.goals.length == 0 || this.tracker[1] >= this.solution[this.tracker[0]].length)
         {
             // end
             $("#startbutton").prop('disabled', false);
@@ -322,11 +323,16 @@ class GameScreen extends ScreenContainer {
         }
         else
         {
+            this.step_count++;
+
+            if(this.step_count > 25)
+                this.speed = 100;
+
             var me = this;
             setTimeout(function(){
                 me.DoStep();
                 currentStep.removeClass("solution-selected");
-            }, 200);
+            }, this.speed);
         }
 
 

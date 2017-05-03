@@ -103,10 +103,11 @@ var solutions = {
 };
 
 
-var get_draggable = function(id, p, s)
+var get_image = function(id, p, s, dragable)
 {
 	s = s || "";
-	return '<img data="'+s+'" class="game-piece-image" id="'+id+'" ondragstart="drag_functions.drag(event)" draggable="true" src="' + p + '">';
+	d = (dragable) ? "ondragstart='drag_functions.drag(event)'' draggable='true'" : "draggable='false'";
+	return '<img data="'+s+'" class="game-piece-image" id="'+id+'" '+d+' src="' + p + '">';
 };
 
 var drag_functions = {
@@ -138,7 +139,7 @@ var drag_functions = {
 			$("#track_" + tracknum + "_" + trackpos).html(
 				"<button class='solution-spot-button' onclick='GM.screenmanager.topScreen.reclaim(" +
 				tracknum + ", " + trackpos + ")'>" +
-				get_draggable(data, resources[data], 1) + "</button>"
+				get_image(data, resources[data], 1, false) + "</button>"
 			);
 			g.solution[tracknum][trackpos] = data;
 		}
@@ -167,7 +168,7 @@ function displayPieces(level)
 	{
 		var count = parts[name];
 
-		var img = get_draggable(name, resources[name], count);
+		var img = get_image(name, resources[name], count, true);
 
 		html += '<div class="game-piece">' +
 					img +
@@ -206,7 +207,7 @@ function displaySolution(level)
 
 function displayBoard(boarddata)
 {
-	var html = '<table>';
+	var html = '<table class="game-table">';
 
 	for(var e in boarddata)
 	{
@@ -227,5 +228,5 @@ function displayBoard(boarddata)
 
 function displayStartButton()
 {
-	return "<button id='startbutton' onclick='GM.screenmanager.topScreen.Begin();'>Start Program</button>";
+	return "<div class='start-container'><button class='start-button' id='startbutton' onclick='GM.screenmanager.topScreen.Begin();'>Start Execution!</button></div>";
 }

@@ -81,6 +81,13 @@ img.overlay {
     color: #222;
 }
 
+.game-table {
+    border-spacing: 0;
+}
+.game-table td {
+    padding: 0;
+}
+
 .menu-block button:hover {
     transition: box-shadow 0.2s ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.18),
@@ -103,10 +110,20 @@ img.overlay {
     outline: none;
 }
 
-div.piece-container, div.solution-container {
-    border-width:2px;
-    border-style: outset;
-    padding: 5px;
+.game-container {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
+                0 0 2px 0 rgba(0,0,0,.2);
+}
+
+.game-container > div:first-child {
+    border-top: 2px solid white;
+}
+.game-container > div {
+    position: relative;
+    background-color: rgba(255,255,255,.2);
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
 .board-container {
@@ -115,6 +132,53 @@ div.piece-container, div.solution-container {
     justify-content: center;
     border-width:2px;
     border-style: outset;
+}
+
+.piece-container {
+    padding: 35px 5px 5px 5px;
+}
+.piece-container::before {
+    content: "All Instructions";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: #fff;
+    text-shadow: 0 1px 1px black;
+    font-size: 18px;
+}
+
+.solution-container {
+    padding: 35px 5px 5px 5px;
+}
+.solution-container::before {
+    content: "Current Instruction Set";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: #fff;
+    text-shadow: 0 1px 1px black;
+    font-size: 18px;
+}
+
+.start-container {
+    padding: 5px;
+}
+
+.start-button {
+    width: 100%;
+    height: 52px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #8bc34a;
+    border: 2px solid #1B5E20;
+    border-radius: 5px;
+
+    transition: background-color ease 0.25s,
+                color ease 0.25s;
+}
+.start-button:hover {
+    background-color: #2E7D32;
+    color: #fff;
 }
 
 hr {
@@ -129,7 +193,7 @@ hr {
 }
 
 .solution-spot {
-    margin: 2px;
+    margin: 3px;
     border: 3px solid #333;
     width: 48px;
     height: 48px;
@@ -143,6 +207,7 @@ hr {
     border-width: 0;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
 }
 
 .solution-selected {
@@ -168,6 +233,7 @@ hr {
 .game-piece-image {
     border-radius: 10px;
     width: inherit;
+    cursor: pointer;
 }
 
 .game-piece-number {
