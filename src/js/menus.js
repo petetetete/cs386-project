@@ -143,6 +143,16 @@ class GameScreen extends ScreenContainer {
         $(".board-container").html(displayBoard(this.tempboard));
     }
 
+    resume()
+    {
+        if(this.halt == true)
+        {
+            this.halt = false;
+            $("#game-notification").hide();
+            this.DoStep();
+        }
+    }
+
     Begin()
     {
         $("#game-notification").hide();
@@ -202,7 +212,7 @@ class GameScreen extends ScreenContainer {
         else if(this.halt)
         {
             $("#startbutton").prop('disabled', false);
-            $("#game-notification").text("Halted Execution");
+            $("#game-notification").html("Halted Execution <button onclick='GM.screenmanager.topScreen.resume();'>Resume</button>");
             $("#game-notification").show();
             $("#startbutton").text("Reset");
             this.board_state = 'inactive';
@@ -242,7 +252,7 @@ class GameScreen extends ScreenContainer {
         {
             this.step_count++;
 
-            if(this.step_count > 25)
+            if(this.step_count > 20)
                 this.speed = 100;
 
             var me = this;
@@ -421,12 +431,15 @@ class GameScreen extends ScreenContainer {
 
     reclaim(tracknum, trackpos)
     {
-        var d = this.solution[tracknum][trackpos];
-        this.pieces[d] ++;
-        $("#" + d).parent().removeClass("none-remain");
-        $("#" + d).siblings().text(this.pieces[d]);
-        $("#track_" + tracknum + "_" + trackpos).html("");
-        this.solution[tracknum][trackpos] = null;
+        if(this.board_state != 'active')
+        {
+            var d = this.solution[tracknum][trackpos];
+            this.pieces[d] ++;
+            $("#" + d).parent().removeClass("none-remain");
+            $("#" + d).siblings().text(this.pieces[d]);
+            $("#track_" + tracknum + "_" + trackpos).html("");
+            this.solution[tracknum][trackpos] = null;
+        }
     }
 
 }
