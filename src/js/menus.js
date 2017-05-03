@@ -212,54 +212,42 @@ class GameScreen extends ScreenContainer {
 
             if(move == 'trackswitch')
             {
-                if(this.switchflag == null || this.switchflag == true)
+                if(this.tracker[0] == this.solution.length - 1)
                 {
-                    // do action
-                    if(this.tracker[0] == this.solution.length - 1)
-                    {
-                        return [-(this.solution.length - 1), 0];
-                    }
-                    return [1, 0];
+                    return [-(this.solution.length - 1), 0];
                 }
+                return [1, 0];
             }
 
             if(move == 'trackup')
             {
-                if(this.switchflag == null || this.switchflag == true)
+                if(this.tracker[0] == 0)
                 {
-                    // do action
-                    if(this.tracker[0] == 0)
-                    {
-                        return [0, 0];
-                    }
-                    return [-1, 0];
+                    return [0, 0];
                 }
+                return [-1, 0];
             }
 
             if(move == 'trackdown')
             {
-                if(this.switchflag == null || this.switchflag == true)
+                if(this.tracker[0] == this.solution.length - 1)
                 {
-                    // do action
-                    if(this.tracker[0] == this.solution.length - 1)
-                    {
-                        return [0, 0];
-                    }
-                    return [1, 0];
+                    return [0, 0];
                 }
+                return [1, 0];
             }
 
             if(move == 'testwallleft')
-                this.testFor(0, -1, 1);
+                return this.testFor(0, -1, 1);
 
             if(move == 'testwallright')
-                this.testFor(0, 1, 1);
+                return this.testFor(0, 1, 1);
 
             if(move == 'testwallup')
-                this.testFor(-1, 0, 1);
+                return this.testFor(-1, 0, 1);
 
             if(move == 'testwalldown')
-                this.testFor(1, 0, 1);
+                return this.testFor(1, 0, 1);
 
         }
         return [0, 1];
@@ -272,13 +260,10 @@ class GameScreen extends ScreenContainer {
             p = this.players[p];
 
             this.switchflag_decay = 1;
-            if(this.tempboard[p[0] + ns][p[1] + ew] == block) {
-                this.switchflag = true;
-                break;
-            }
-            else
-                this.switchflag = false;
+            if(this.tempboard[p[0] + ns][p[1] + ew] == block)
+                return [0, 1];
         }
+        return [0, 2];
     }
 
     movePlayer(player, ns, ew)
@@ -331,7 +316,7 @@ class GameScreen extends ScreenContainer {
     isConflict(player)
     {
         var s = this.tempboard.length;
-        if(player[0] < 0 || player[0] >= s || player[1] < 0 || player[1] >= s)
+        if(player[0] < 0 || player[0] >= s || player[1] < 0 || player[1] >= this.tempboard[player[0]].length)
             return true;
         var value = this.tempboard[player[0]][player[1]];
         if(value == 1 || value == 2) // wall or player

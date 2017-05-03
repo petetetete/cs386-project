@@ -81,7 +81,14 @@ var levels = {
 	],
 
 	/* Introducing loops */
+
 	loops : [
+		[0, 0, 0, 0, 0, 0],
+		[2, 0, 0, 0, 0, 3],
+		[0, 0, 0, 0, 0, 0],
+	],
+
+	loopsII : [
 		[0, 0, 0, 0, 0, 0],
 	    [0, 4, 0, 0, 3, 0],
 	    [0, 4, 0, 0, 0, 0],
@@ -90,18 +97,31 @@ var levels = {
 	    [0, 0, 0, 0, 0, 0],
 	],
 
-	loopsII : [
 
+	/* Introducing tracks */
+	tracks : [
+		[1, 0, 0, 4, 1, 1, 1],
+		[1, 0, 0, 0, 0, 0, 3],
+		[1, 2, 0, 0, 0, 0, 1],
+		[1, 1, 1, 1, 1, 1, 1],
 	],
 
-	/* Introducing tracks and track conditions */
-	tracks : [
-		[0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0],
+	// Introducing conditioning
+	conditionsI : [
+		[1, 1, 0, 0, 0, 0],
+		[1, 1, 0, 0, 0, 0],
 		[3, 0, 0, 1, 0, 0],
-		[4, 4, 0, 0, 0, 0],
+		[1, 1, 0, 0, 0, 0],
+		[1, 1, 0, 0, 0, 0],
+		[1, 1, 2, 0, 0, 0],
+	],
+	conditionsII : [
+		[0, 4, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0],
-		[0, 0, 2, 0, 0, 0],
+		[1, 0, 0, 1, 0, 0],
+		[4, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0],
+		[0, 2, 0, 0, 0, 0],
 	],
 
 	/* Introducing multiple players */
@@ -157,6 +177,11 @@ var pieces = {
 	},
 
 	loops : {
+		loop2 : 1,
+		right : 1
+	},
+
+	loopsII : {
 		right : 1,
 		up : 1,
 		loop2 : 1,
@@ -168,7 +193,22 @@ var pieces = {
 	},
 
 	tracks : {
+		up : 1,
+		loop2 : 1,
+		right : 1,
+		trackdown : 1
+	},
+
+	conditionsI : {
 		left : 1,
+		up : 1,
+		loop3 : 2,
+		testwallright : 1,
+		trackswitch : 2,
+	},
+
+	conditionsII : {
+		right : 1,
 		up : 1,
 		loop3 : 2,
 		testwallright : 1,
@@ -205,12 +245,21 @@ var solutions = {
 		8
 	],
 	loops : [
+		3
+	],
+	loopsII : [
 		4
 	],
 	multiplegoals : [
 		8
 	],
 	tracks : [
+		3, 3
+	],
+	conditionsI : [
+		8, 8
+	],
+	conditionsII :[
 		8, 8
 	],
 	multiplerobots : [
