@@ -8,7 +8,7 @@ var resources = {
 	up : 'images/up.png',
 	down : 'images/down.png',
 	wall : 'images/Wall.png',
-	spike : 'images/spike.png',
+	spike : 'images/spikeB.png',
 	loop2 : 'images/loop2.png',
 	loop3 : 'images/loop3.png',
 	loop4 : 'images/loop4.png',
@@ -17,20 +17,24 @@ var resources = {
 	trackswitch : 'images/trackswitch.png',
 	testwallleft : 'images/testwallleft.png',
 	testwallright : 'images/testwallright.png',
-	testwallleft : 'images/testwallup.png',
-	testwallright : 'images/testwalldown.png'
+	testwallup : 'images/testwallup.png',
+	testwalldown : 'images/testwalldown.png',
+	death : 'images/death.png',
+	robot : 'images/robot1.png',
+	battery : 'images/battery.png'
 };
 var rmap = {
 	0 : 'blank',
 	1 : 'wall',
-	2 : 'person',
-	3 : 'goal',
-	4 : 'spike'
+	2 : 'robot',
+	3 : 'battery', // goal
+	4 : 'spike',
+	5 : 'death'
 };
 
 var levels = {
 	/* Introduction to movement */
-	1 : [
+	basics : [
 		[1, 1, 1, 1, 1, 1],
 		[1, 1, 1, 1, 1, 1],
 		[1, 1, 3, 1, 1, 1],
@@ -38,7 +42,7 @@ var levels = {
 		[1, 1, 1, 1, 1, 1],
 		[1, 1, 1, 1, 1, 1]
 	],
-	2 : [
+	basicsII : [
 		[1, 1, 1, 1, 1, 1],
 		[1, 1, 0, 0, 1, 1],
 		[1, 1, 3, 0, 1, 1],
@@ -48,7 +52,7 @@ var levels = {
 	],
 
 	/* Introducing spikes */
-	3 : [
+	spikes : [
 		[1, 1, 1, 1, 1, 1],
 		[1, 0, 0, 0, 1, 1],
 		[1, 2, 4, 3, 0, 1],
@@ -57,7 +61,7 @@ var levels = {
 		[1, 1, 1, 1, 1, 1]
 	],
 
-	4 : [
+	spikesII : [
 		[4, 4, 4, 4, 4, 4, 4],
 		[4, 0, 0, 3, 0, 0, 4],
 		[4, 0, 4, 4, 4, 0, 4],
@@ -66,18 +70,32 @@ var levels = {
 		[4, 4, 4, 4, 4, 4, 4]
 	],
 
-	/* Introducing loops */
-	5 : [
+	// Multiple Goals
+	multiplegoals : [
 		[0, 0, 0, 0, 0, 0],
+	    [0, 3, 0, 0, 0, 0],
 	    [0, 0, 0, 0, 0, 0],
-	    [3, 0, 0, 0, 0, 1],
-	    [0, 0, 0, 0, 0, 0],
+	    [0, 0, 0, 3, 0, 0],
 	    [0, 0, 0, 0, 0, 0],
 	    [0, 0, 0, 0, 2, 0],
 	],
 
+	/* Introducing loops */
+	loops : [
+		[0, 0, 0, 0, 0, 0],
+	    [0, 4, 0, 0, 3, 0],
+	    [0, 4, 0, 0, 0, 0],
+	    [0, 0, 0, 0, 0, 0],
+	    [0, 2, 0, 0, 0, 0],
+	    [0, 0, 0, 0, 0, 0],
+	],
+
+	loopsII : [
+
+	],
+
 	/* Introducing tracks and track conditions */
-	6 : [
+	tracks : [
 		[0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0],
 		[3, 0, 0, 1, 0, 0],
@@ -87,7 +105,7 @@ var levels = {
 	],
 
 	/* Introducing multiple players */
-	7 : [
+	multiplerobots : [
 		[1, 1, 1, 1, 1, 1, 1],
 	    [1, 1, 1, 3, 0, 0, 1],
 	    [1, 1, 1, 1, 1, 0, 1],
@@ -95,45 +113,61 @@ var levels = {
 	    [1, 0, 1, 1, 1, 2, 1],
 	    [1, 2, 1, 1, 1, 1, 1],
 	    [1, 1, 1, 1, 1, 1, 1]
+	],
+
+	// leveraging multiple tracks for fun and profit
+	TestI : [
+		[1, 1, 1, 1, 1, 1, 1],
+		[1, 0, 0, 0, 3, 1, 1],
+		[1, 0, 1, 1, 1, 3, 1],
+		[1, 0, 1, 1, 1, 0, 1],
+		[1, 2, 1, 1, 1, 0, 1],
+		[1, 1, 2, 0, 0, 0, 1],
+		[1, 1, 1, 1, 1, 1, 1],
 	]
 };
 
 var pieces = {
-	1 : {
+	basics : {
 		left: 2,
 		right: 1,
 		up: 2,
 		down: 1,
 	},
 
-	2 : {
+	basicsII : {
 		left : 2,
 		right : 3,
 		up : 3,
 		down: 1,
 	},
 
-	3 : {
+	spikes : {
 		left: 1,
 		right : 3,
 		up : 3,
 		down : 1,
 	},
 
-	4 : {
+	spikesII : {
 		right : 1,
 		left: 3,
 		up : 3,
 		down : 2,
 	},
 
-	5 : {
+	loops : {
 		right : 1,
 		up : 1,
 		loop2 : 1,
 	},
 
-	6 : {
+	multiplegoals : {
+		up : 4,
+		left : 3
+	},
+
+	tracks : {
 		left : 1,
 		up : 1,
 		loop3 : 2,
@@ -141,35 +175,50 @@ var pieces = {
 		trackswitch : 2,
 	},
 
-	7 : {
-		left : 1,
-		right : 1,
+	multiplerobots : {
+		left : 2,
+		right : 2,
 		up : 4,
 	},
+
+	TestI : {
+		right : 3,
+		up : 3,
+		trackup : 2,
+		trackdown : 2,
+		loop2 : 1,
+		loop4 : 1
+	}
 };
 
 var solutions = {
-	1 : [
+	basics : [
 		4
 	],
-	2 : [
+	basicsII : [
 		8
 	],
-	3 : [
+	spikes : [
 		6
 	],
-	4 : [
+	spikesII : [
 		8
 	],
-	5 : [
+	loops : [
 		4
 	],
-	6 : [
-		5, 5
+	multiplegoals : [
+		8
 	],
-	7 : [
-		5
+	tracks : [
+		8, 8
 	],
+	multiplerobots : [
+		8
+	],
+	TestI : [
+		6, 6, 6
+	]
 };
 
 
@@ -302,5 +351,5 @@ function displayBoard(boarddata)
 
 function displayStartButton()
 {
-	return "<div class='start-container'><button class='start-button' id='startbutton' onclick='GM.screenmanager.topScreen.Begin();'>Start Execution!</button></div>";
+	return "<div class='start-container'><button class='start-button' id='startbutton' onclick='GM.screenmanager.topScreen.ActOnState();'>Start Execution!</button></div>";
 }
