@@ -293,7 +293,7 @@ var drag_functions = {
 
 		var g = GM.screenmanager.topScreen;
 
-		if(g.pieces[data] > 0)
+		if(g.pieces[data] > 0 && g.board_state != 'active')
 		{
 
 			if(g.solution[tracknum][trackpos] !== null)

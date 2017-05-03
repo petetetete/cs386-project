@@ -59,6 +59,7 @@ class GameScreen extends ScreenContainer {
         $(".solution-container").html(displaySolution(level));
 
         this.board_state = 'preload';
+        this.halt = false;
 
         this.pieces = {};
         this.solution = [];
@@ -94,7 +95,7 @@ class GameScreen extends ScreenContainer {
         }
         else if(this.board_state == 'active')
         {
-            // do nothing!
+            this.halt = true;
         }
         else if(this.board_state == 'inactive')
         {
@@ -145,7 +146,6 @@ class GameScreen extends ScreenContainer {
     Begin()
     {
         $("#game-notification").hide();
-        $("#startbutton").prop('disabled', true);
 
         this.board_state = 'active';
 
@@ -154,10 +154,105 @@ class GameScreen extends ScreenContainer {
 
         this.step_count = 0;
         this.speed = 200;
+        this.halt = false;
 
         this.display();
 
         this.DoStep();
+    }
+
+    DoStep()
+    {
+        var currentStep = $("#track_" + this.tracker[0] + "_" + this.tracker[1]);
+        currentStep.addClass("solution-selected");
+
+        // apply move
+        $(".board-container").html(displayBoard(this.tempboard));
+        var result = this.ApplyMove(this.solution[this.tracker[0]][this.tracker[1]]);
+
+        if(this.switchflag_decay == 0)
+            this.switchflag = null;
+        this.switchflag_decay--;
+
+        // see where tracker should be moved next
+        this.tracker[0] += result[0];
+        this.tracker[1] += result[1];
+
+        this.tracker[0] = Math.max(0, this.tracker[0]);
+        this.tracker[1] = Math.max(0, this.tracker[1]);
+
+        // check for various end of program conditions
+
+        // check if goals were met first, nothing else matters if the goal was met!
+        if(this.goals.length == 0)
+        {
+            // end
+            $("#startbutton").prop('disabled', false);
+
+            var that = this;
+            setTimeout(function(){
+                $("#game-notification").text("Victory!");
+                $("#game-notification").show();
+                $("#startbutton").text("Reset");
+                that.board_state = 'inactive';
+                that.display();
+                currentStep.removeClass("solution-selected");
+            }, 200);
+        }
+        else if(this.halt)
+        {
+            $("#startbutton").prop('disabled', false);
+            $("#game-notification").text("Halted Execution");
+            $("#game-notification").show();
+            $("#startbutton").text("Reset");
+            this.board_state = 'inactive';
+            this.display();
+            currentStep.removeClass("solution-selected");
+        }
+        else if(this.step_count >= 50 || this.tracker[1] >= this.solution[this.tracker[0]].length)
+        {
+            // ran out of time
+            // either reached end of a track, or reached step limit
+
+            $("#startbutton").prop('disabled', false);
+            var that = this;
+            setTimeout(function(){
+                $("#game-notification").text("Ran out of time, try again!");
+                $("#game-notification").show();
+                $("#startbutton").text("Reset");
+                that.board_state = 'inactive';
+                that.display();
+                currentStep.removeClass("solution-selected");
+            }, 200);
+        }
+        else if(this.players.length != this.num_players)
+        {
+            $("#startbutton").prop('disabled', false);
+            var that = this;
+            setTimeout(function(){
+                $("#game-notification").text("You spiked your poor robot...");
+                $("#game-notification").show();
+                $("#startbutton").text("Reset");
+                that.board_state = 'inactive';
+                that.display();
+                currentStep.removeClass("solution-selected");
+            }, 200);
+        }
+        else
+        {
+            this.step_count++;
+
+            if(this.step_count > 25)
+                this.speed = 100;
+
+            var me = this;
+            setTimeout(function(){
+                me.DoStep();
+                currentStep.removeClass("solution-selected");
+            }, this.speed);
+        }
+
+
     }
 
     ApplyMove(move)
@@ -322,90 +417,6 @@ class GameScreen extends ScreenContainer {
         if(value == 1 || value == 2) // wall or player
             return true;
         return false;
-    }
-
-    DoStep()
-    {
-        var currentStep = $("#track_" + this.tracker[0] + "_" + this.tracker[1]);
-        currentStep.addClass("solution-selected");
-
-        // apply move
-        $(".board-container").html(displayBoard(this.tempboard));
-        var result = this.ApplyMove(this.solution[this.tracker[0]][this.tracker[1]]);
-
-        if(this.switchflag_decay == 0)
-            this.switchflag = null;
-        this.switchflag_decay--;
-
-        // see where tracker should be moved next
-        this.tracker[0] += result[0];
-        this.tracker[1] += result[1];
-
-        this.tracker[0] = Math.max(0, this.tracker[0]);
-        this.tracker[1] = Math.max(0, this.tracker[1]);
-
-        // check for various end of program conditions
-
-        // check if goals were met first, nothing else matters if the goal was met!
-        if(this.goals.length == 0)
-        {
-            // end
-            $("#startbutton").prop('disabled', false);
-
-            var that = this;
-            setTimeout(function(){
-                $("#game-notification").text("Victory!");
-                $("#game-notification").show();
-                $("#startbutton").text("Reset");
-                that.board_state = 'inactive';
-                that.display();
-                currentStep.removeClass("solution-selected");
-            }, 200);
-        }
-        else if(this.step_count >= 100 || this.tracker[1] >= this.solution[this.tracker[0]].length)
-        {
-            // ran out of time
-            // either reached end of a track, or reached step limit
-
-            $("#startbutton").prop('disabled', false);
-            var that = this;
-            setTimeout(function(){
-                $("#game-notification").text("Ran out of time, try again!");
-                $("#game-notification").show();
-                $("#startbutton").text("Reset");
-                that.board_state = 'inactive';
-                that.display();
-                currentStep.removeClass("solution-selected");
-            }, 200);
-        }
-        else if(this.players.length != this.num_players)
-        {
-            $("#startbutton").prop('disabled', false);
-            var that = this;
-            setTimeout(function(){
-                $("#game-notification").text("You spiked your poor robot...");
-                $("#game-notification").show();
-                $("#startbutton").text("Reset");
-                that.board_state = 'inactive';
-                that.display();
-                currentStep.removeClass("solution-selected");
-            }, 200);
-        }
-        else
-        {
-            this.step_count++;
-
-            if(this.step_count > 25)
-                this.speed = 100;
-
-            var me = this;
-            setTimeout(function(){
-                me.DoStep();
-                currentStep.removeClass("solution-selected");
-            }, this.speed);
-        }
-
-
     }
 
     reclaim(tracknum, trackpos)
