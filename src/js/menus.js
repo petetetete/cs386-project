@@ -58,6 +58,8 @@ class GameScreen extends ScreenContainer {
         $(".piece-container").html(displayPieces(level));
         $(".solution-container").html(displaySolution(level));
 
+        this.board_state = 'preload';
+
         this.pieces = {};
         this.solution = [];
 
@@ -72,13 +74,40 @@ class GameScreen extends ScreenContainer {
             for(var j = 0; j < solutions[level][i]; j++)
                 this.solution[i].push(null);
         }
+
     }
 
-    Begin()
+    ActOnState()
     {
-        $("#game-notification").hide();
-        $("#startbutton").prop('disabled', true);
+        if(this.board_state == 'preload')
+        {
+            this.loadBoard();
+            this.Begin();
+            this.board_state = 'active';
+            $("#startbutton").text("Running!");
+        }
+        else if(this.board_state == 'ready')
+        {
+            this.Begin();
+            this.board_state = 'active';
+            $("#startbutton").text("Running!");
+        }
+        else if(this.board_state == 'active')
+        {
+            // do nothing!
+        }
+        else if(this.board_state == 'inactive')
+        {
+            this.loadBoard();
+            this.display();
+            this.board_state = 'ready';
+            $("#game-notification").hide();
+            $("#startbutton").text("Start Execution!");
+        }
+    }
 
+    loadBoard()
+    {
         var players = [];
         var goals = [];
 
@@ -103,8 +132,22 @@ class GameScreen extends ScreenContainer {
 
         this.tracker = [0, 0];
         this.players = players;
+        this.num_players = players.length;
         this.goals = goals;
         this.tempboard = tempboard;
+    }
+
+    display()
+    {
+        $(".board-container").html(displayBoard(this.tempboard));
+    }
+
+    Begin()
+    {
+        $("#game-notification").hide();
+        $("#startbutton").prop('disabled', true);
+
+        this.board_state = 'active';
 
         this.switchflag = null;
         this.switchflag_decay = 0;
@@ -112,7 +155,8 @@ class GameScreen extends ScreenContainer {
         this.step_count = 0;
         this.speed = 200;
 
-        $(".board-container").html(displayBoard(this.tempboard));
+        this.display();
+
         this.DoStep();
     }
 
@@ -184,7 +228,7 @@ class GameScreen extends ScreenContainer {
                 if(this.switchflag == null || this.switchflag == true)
                 {
                     // do action
-                    if(this.tracker[0] == this.solution.length - 1)
+                    if(this.tracker[0] == 0)
                     {
                         return [0, 0];
                     }
@@ -256,11 +300,6 @@ class GameScreen extends ScreenContainer {
 
             this.tempboard[player[0]][player[1]] = 2;
         }
-        else {
-            $("#startbutton").prop('disabled', false);
-            $("#game-notification").text("You spiked your poor robot...");
-            $("#game-notification").show();
-        }
     }
 
     getGoal(player)
@@ -282,7 +321,8 @@ class GameScreen extends ScreenContainer {
                 return player[0] == e[0] && player[1] == e[1];
             });
             player[2] = false;
-            this.goals.splice(i, 1);
+            this.players.splice(i, 1);
+            this.tempboard[player[0]][player[1]] = 5; // death marker
         }
     }
     isConflict(player)
@@ -313,34 +353,53 @@ class GameScreen extends ScreenContainer {
         this.tracker[0] += result[0];
         this.tracker[1] += result[1];
 
-        // check for end of program
-        if(this.step_count >= 100 || this.players.length == 0 || this.goals.length == 0 || this.tracker[1] >= this.solution[this.tracker[0]].length)
+        this.tracker[0] = Math.max(0, this.tracker[0]);
+        this.tracker[1] = Math.max(0, this.tracker[1]);
+
+        // check for various end of program conditions
+
+        // check if goals were met first, nothing else matters if the goal was met!
+        if(this.goals.length == 0)
         {
             // end
             $("#startbutton").prop('disabled', false);
 
-            var finished = true;
-            for(var i = 0; i < this.players.length; i++)
-            {
-                if (this.players[i][2] == false)
-                    finished = false;
-            }
-
             var that = this;
             setTimeout(function(){
-                var all_alive = true;
-                for(var i = 0; i < that.players.length; i++)
-                {
-                    if (that.players[i][2] == false)
-                        all_alive = false;
-                }
+                $("#game-notification").text("Victory!");
+                $("#game-notification").show();
+                $("#startbutton").text("Reset");
+                that.board_state = 'inactive';
+                that.display();
+                currentStep.removeClass("solution-selected");
+            }, 200);
+        }
+        else if(this.step_count >= 100 || this.tracker[1] >= this.solution[this.tracker[0]].length)
+        {
+            // ran out of time
+            // either reached end of a track, or reached step limit
 
-                if(that.goals.length == 0 && all_alive) {
-                    $("#game-notification").text("Victory!");
-                    $("#game-notification").show();
-                }
-
-                $(".board-container").html(displayBoard(that.tempboard));
+            $("#startbutton").prop('disabled', false);
+            var that = this;
+            setTimeout(function(){
+                $("#game-notification").text("Ran out of time, try again!");
+                $("#game-notification").show();
+                $("#startbutton").text("Reset");
+                that.board_state = 'inactive';
+                that.display();
+                currentStep.removeClass("solution-selected");
+            }, 200);
+        }
+        else if(this.players.length != this.num_players)
+        {
+            $("#startbutton").prop('disabled', false);
+            var that = this;
+            setTimeout(function(){
+                $("#game-notification").text("You spiked your poor robot...");
+                $("#game-notification").show();
+                $("#startbutton").text("Reset");
+                that.board_state = 'inactive';
+                that.display();
                 currentStep.removeClass("solution-selected");
             }, 200);
         }
