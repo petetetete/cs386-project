@@ -144,7 +144,7 @@ img.overlay {
 
 .piece-container {
     user-select: none;
-    padding: 35px 5px 5px 5px;
+    padding-top: 35px;
 }
 .piece-container::before {
     content: "All Instructions";
@@ -157,7 +157,7 @@ img.overlay {
 }
 
 .solution-container {
-    padding: 35px 5px 5px 5px;
+    padding-top: 35px;
 }
 .solution-container::before {
     content: "Current Instruction Set";
@@ -202,7 +202,19 @@ hr {
 }
 
 .track-container {
+    position: relative;
     display: flex;
+    border-top: 2px solid #fff;
+    padding: 5px 5px 5px 45px;
+}
+.track-container::before {
+    content: "Track";
+    color: #fff;
+    position: absolute;
+    top: 25px;
+    left: 5px;
+    text-shadow: 0 2px 5px rgba(0,0,0,.18);
+    font-size: 14px;
 }
 
 .solution-spot {
@@ -230,6 +242,11 @@ hr {
     border-color: #ffeb3b;
     box-shadow: 0 2px 5px 0 rgba(235,235,59,.18),
                 0 0 2px 0 rgba(235,235,59,.2);
+}
+
+.game-pieces {
+    border-top: 2px solid #fff;
+    padding: 5px;
 }
 
 .game-piece {

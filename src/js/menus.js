@@ -328,10 +328,18 @@ class GameScreen extends ScreenContainer {
 
             var that = this;
             setTimeout(function(){
-                if(that.goals.length == 0) {
+                var all_alive = true;
+                for(var i = 0; i < that.players.length; i++)
+                {
+                    if (that.players[i][2] == false)
+                        all_alive = false;
+                }
+
+                if(that.goals.length == 0 && all_alive) {
                     $("#game-notification").text("Victory!");
                     $("#game-notification").show();
                 }
+
                 $(".board-container").html(displayBoard(that.tempboard));
                 currentStep.removeClass("solution-selected");
             }, 200);
