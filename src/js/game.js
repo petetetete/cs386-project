@@ -182,6 +182,10 @@ var drag_functions = {
 
 			g.pieces[data] --;
 
+			if (g.pieces[data] == 0) {
+				$("#" + data).parent().addClass("none-remain");
+			}
+
 			$("#" + data).siblings().text(g.pieces[data]);
 			$("#track_" + tracknum + "_" + trackpos).html(
 				"<button class='solution-spot-button' onclick='GM.screenmanager.topScreen.reclaim(" +

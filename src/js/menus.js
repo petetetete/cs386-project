@@ -343,6 +343,7 @@ class GameScreen extends ScreenContainer {
     {
         var d = this.solution[tracknum][trackpos];
         this.pieces[d] ++;
+        $("#" + d).parent().removeClass("none-remain");
         $("#" + d).siblings().text(this.pieces[d]);
         $("#track_" + tracknum + "_" + trackpos).html("");
         this.solution[tracknum][trackpos] = null;

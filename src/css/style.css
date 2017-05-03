@@ -124,6 +124,7 @@ img.overlay {
 }
 
 .piece-container {
+    user-select: none;
     padding: 35px 5px 5px 5px;
 }
 .piece-container::before {
@@ -224,6 +225,13 @@ hr {
 
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
                 0 0 2px 0 rgba(0,0,0,.2);
+}
+
+.game-piece.none-remain {
+    opacity: 0.75;
+}
+.game-piece.none-remain > .game-piece-image {
+    cursor: default;
 }
 
 .game-piece-image {
