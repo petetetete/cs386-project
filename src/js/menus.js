@@ -270,11 +270,14 @@ class GameScreen extends ScreenContainer {
         for(var p in this.players)
         {
             p = this.players[p];
-            if(this.tempboard[p[0] + ns][p[1] + ew] == block)
+
+            this.switchflag_decay = 1;
+            if(this.tempboard[p[0] + ns][p[1] + ew] == block) {
                 this.switchflag = true;
+                break;
+            }
             else
                 this.switchflag = false;
-            this.switchflag_decay = 1;
         }
     }
 
