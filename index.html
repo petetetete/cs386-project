@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="src/css/style.css" />
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <title>Drop The Code - CS 386</title>
@@ -31,10 +31,10 @@
             </div>
             <div data-page="user-login" class="page">
                 <div class="menu-block">
-                    <input data-clear="true" value="User Name" />
+                    <input placeholder="Username" />
                 </div>
                 <div class="menu-block">
-                    <input data-clear="true" value="Password" />
+                    <input placeholder="Password" />
                 </div>
                 <div class="menu-block">
                     <button onclick="changePage('main')">Login</button>
@@ -284,10 +284,12 @@
                     <div class="title">Display previous puzzles here...</div>
                 </div>
             </div>
-        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="js/classes.js"></script>
-        <script type="text/javascript" src="js/menus.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/game.js"></script>
+        </div>
+
+        <script type="text/javascript" src="libs/jquery-3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="src/js/classes.js"></script>
+        <script type="text/javascript" src="src/js/menus.js"></script>
+        <script type="text/javascript" src="src/js/main.js"></script>
+        <script type="text/javascript" src="src/js/game.js"></script>
     </body>
 </html>
