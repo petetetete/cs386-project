@@ -1,4 +1,3 @@
-
 class MainMenuScreen extends ScreenContainer
 {
     constructor(menuName)
@@ -364,6 +363,19 @@ class GameScreen extends ScreenContainer {
         this.solution[tracknum][trackpos] = null;
     }
 
+}
+
+function tryLogin() {
+    var username = document.getElementById("user-username");
+    var password = document.getElementById("user-password");
+
+    if (GM.checkLogin(username.value, password.value)) {
+        changePage("main");
+    }
+    else {
+        username.value = "";
+        password.value = "";
+    }
 }
 
 function changePage(toPage, level) {

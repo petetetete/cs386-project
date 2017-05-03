@@ -2,7 +2,18 @@ class GameManager
 {
     constructor()
     {
-        this.users = [];
+        this.users = [{
+            username: "ph289",
+            password: "asdf"
+        },
+        {
+            username: "test",
+            password: "test"
+        },
+        {
+            username: "guest",
+            password: ""
+        }];
         this.screenmanager = new ScreenManager();
     }
 
@@ -31,6 +42,16 @@ class GameManager
     getUser()
     {
         return this.users[this.users.length - 1];
+    }
+
+    checkLogin(user, pass) {
+        for (var i = 0; i < this.users.length; i++) {
+            if (this.users[i].username == user && this.users[i].password == pass) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

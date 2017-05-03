@@ -25,19 +25,16 @@
                 <div class="menu-block">
                     <button onclick="changePage('teacher-login')">Teacher Login</button>
                 </div>
-                <div class="menu-block">
-                    <button onclick="changePage('creator-login')">Creator Login</button>
-                </div>
             </div>
             <div data-page="user-login" class="page">
                 <div class="menu-block">
-                    <input placeholder="Username" />
+                    <input placeholder="Username" type="text" id="user-username" />
                 </div>
                 <div class="menu-block">
-                    <input placeholder="Password" />
+                    <input placeholder="Password" type="password" id="user-password" />
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('main')">Login</button>
+                    <button onclick="tryLogin('main')">Login</button>
                 </div>
             </div>
             <div data-page="guest-login" class="page">
@@ -143,10 +140,7 @@
                     <div class="title">Drop The Code</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('levels')">Single Player</button>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('levels')">Multiplayer</button>
+                    <button onclick="changePage('levels')">Play Game</button>
                 </div>
                 <hr>
                 <div class="menu-block">
@@ -154,7 +148,7 @@
                 </div>
                 <hr>
                 <div class="menu-block">
-                    <button onclick="changePage('logout')">Logout</button>
+                    <button onclick="changePage('home')">Logout</button>
                 </div>
             </div>
                 <div data-page="settings" class="page">
@@ -218,11 +212,6 @@
                     <div class="title">Nothing</div>
                 </div>
             </div>
-            <div data-page="logout" class="page">
-                <div class="menu-block">
-                    <div class="title">Logging out...</div>
-                </div>
-            </div>
             <div data-page="remind-students" class="page">
                 <div class="menu-block">
                     <div class="title">Which Student?</div>
@@ -267,27 +256,6 @@
             <div data-page="pushnotification" class="page">
                 <div class="menu-block">
                     <div class="title">Student Notified</div>
-                </div>
-            </div>
-            <div data-page="creator-login" class="page">
-                <div class="menu-block">
-                    <div class="title">Welcome Creator</div>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('create-puzzle')">Create Puzzle</button>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('view-puzzles')">View Created Puzzles</button>
-                </div>
-            </div>
-            <div data-page="create-puzzle" class="page">
-                <div class="menu-block">
-                    <div class="title">Puzzle creation goes here...</div>
-                </div>
-            </div>
-            <div data-page="view-puzzles" class="page">
-                <div class="menu-block">
-                    <div class="title">Display previous puzzles here...</div>
                 </div>
             </div>
         </div>
