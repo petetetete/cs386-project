@@ -16,7 +16,9 @@ var resources = {
 	trackdown : 'images/trackdown.png',
 	trackswitch : 'images/trackswitch.png',
 	testwallleft : 'images/testwallleft.png',
-	testwallright : 'images/testwallright.png'
+	testwallright : 'images/testwallright.png',
+	testwallleft : 'images/testwallup.png',
+	testwallright : 'images/testwalldown.png'
 };
 var rmap = {
 	0 : 'blank',
@@ -37,11 +39,11 @@ var levels = {
 		[1, 1, 1, 1, 1, 1]
 	],
 	2 : [
+		[1, 1, 1, 1, 1, 1],
 		[1, 1, 0, 0, 1, 1],
-		[1, 1, 0, 3, 0, 0],
-		[1, 1, 0, 0, 1, 0],
-		[1, 1, 1, 0, 1, 0],
-		[1, 0, 0, 0, 1, 0],
+		[1, 1, 3, 0, 1, 1],
+		[1, 1, 1, 0, 1, 1],
+		[1, 0, 0, 0, 1, 1],
 		[1, 2, 1, 0, 0, 0]
 	],
 
@@ -55,34 +57,44 @@ var levels = {
 		[1, 1, 1, 1, 1, 1]
 	],
 
-	/* Introducing loops */
 	4 : [
-		[1, 1, 1, 1, 1, 1],
-		[1, 1, 0, 0, 1, 1],
-		[1, 0, 0, 3, 0, 1],
-		[4, 0, 0, 1, 0, 1],
-		[0, 0, 1, 1, 0, 1],
-		[2, 0, 0, 0, 0, 1]
+		[4, 4, 4, 4, 4, 4, 4],
+		[4, 0, 0, 3, 0, 0, 4],
+		[4, 0, 4, 4, 4, 0, 4],
+		[4, 0, 0, 0, 4, 0, 4],
+		[4, 4, 4, 0, 2, 0, 4],
+		[4, 4, 4, 4, 4, 4, 4]
+	],
+
+	/* Introducing loops */
+	5 : [
+		[0, 0, 0, 0, 0, 0],
+	    [0, 0, 0, 0, 0, 0],
+	    [3, 0, 0, 0, 0, 1],
+	    [0, 0, 0, 0, 0, 0],
+	    [0, 0, 0, 0, 0, 0],
+	    [0, 0, 0, 0, 2, 0],
 	],
 
 	/* Introducing tracks and track conditions */
-	5 : [
+	6 : [
 		[0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0],
 		[3, 0, 0, 1, 0, 0],
-		[0, 0, 0, 0, 0, 0],
+		[4, 4, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0],
 		[0, 0, 2, 0, 0, 0],
 	],
 
 	/* Introducing multiple players */
-	6 : [
-		[1, 1, 1, 1, 1, 1],
-		[1, 1, 1, 1, 1, 1],
-		[1, 1, 1, 3, 0, 1],
-		[4, 3, 0, 1, 0, 1],
-		[1, 0, 1, 1, 2, 1],
-		[1, 2, 1, 1, 1, 1]
+	7 : [
+		[1, 1, 1, 1, 1, 1, 1],
+	    [1, 1, 1, 3, 0, 0, 1],
+	    [1, 1, 1, 1, 1, 0, 1],
+	    [4, 3, 0, 0, 1, 0, 1],
+	    [1, 0, 1, 1, 1, 2, 1],
+	    [1, 2, 1, 1, 1, 1, 1],
+	    [1, 1, 1, 1, 1, 1, 1]
 	]
 };
 
@@ -95,9 +107,10 @@ var pieces = {
 	},
 
 	2 : {
-		left : 1,
-		right : 4,
-		up : 4,
+		left : 2,
+		right : 3,
+		up : 3,
+		down: 1,
 	},
 
 	3 : {
@@ -109,11 +122,18 @@ var pieces = {
 
 	4 : {
 		right : 1,
+		left: 3,
+		up : 3,
+		down : 2,
+	},
+
+	5 : {
+		right : 1,
 		up : 1,
 		loop2 : 1,
 	},
 
-	5 : {
+	6 : {
 		left : 1,
 		up : 1,
 		loop3 : 2,
@@ -121,7 +141,7 @@ var pieces = {
 		trackswitch : 2,
 	},
 
-	6 : {
+	7 : {
 		left : 1,
 		right : 1,
 		up : 4,
@@ -139,12 +159,15 @@ var solutions = {
 		6
 	],
 	4 : [
-		4
+		8
 	],
 	5 : [
-		5, 5
+		4
 	],
 	6 : [
+		5, 5
+	],
+	7 : [
 		5
 	],
 };
@@ -213,7 +236,7 @@ function displayPieces(level)
 {
 	var parts = pieces[level];
 
-	var html = '<div>';
+	var html = '<div class="game-pieces">';
 
 	for(var name in parts)
 	{
