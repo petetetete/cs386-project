@@ -108,16 +108,15 @@ class GameScreen extends ScreenContainer {
         this.switchflag_decay = 0;
 
         $(".board-container").html(displayBoard(this.tempboard));
-        var me = this;
-        setTimeout(function(){
-            me.DoStep();
-        }, 1000);
+        this.DoStep();
 
         $("#startbutton").prop('disabled', true);
     }
 
     ApplyMove(move)
     {
+        $(".board-container").html(displayBoard(this.tempboard));
+
         if(move != null)
         {
             if(move == 'up')
@@ -208,7 +207,6 @@ class GameScreen extends ScreenContainer {
             if(move == 'testwalldown')
                 this.testFor(1, 0, 1);
 
-            $(".board-container").html(displayBoard(this.tempboard));
 
         }
         return [0, 1];
@@ -241,6 +239,7 @@ class GameScreen extends ScreenContainer {
         }
 
         this.getDead(player);
+        // Check for death here
 
         if(player[2])
         {
@@ -285,20 +284,20 @@ class GameScreen extends ScreenContainer {
 
     DoStep()
     {
-        $("#track_" + this.tracker[0] + "_" + this.tracker[1]).css("background-color", "rgba(0,0,0,0)");
+        var currentStep = $("#track_" + this.tracker[0] + "_" + this.tracker[1]);
+        currentStep.addClass("solution-selected");
 
         // apply move
         var result = this.ApplyMove(this.solution[this.tracker[0]][this.tracker[1]]);
 
         if(this.switchflag_decay == 0)
             this.switchflag = null;
-        this.switchflag_decay --;
+        this.switchflag_decay--;
 
         // see where tracker should be moved next
         this.tracker[0] += result[0];
         this.tracker[1] += result[1];
 
-        $("#track_" + this.tracker[0] + "_" + this.tracker[1]).css("background-color", "yellow");
 
         // check for end of program
 
@@ -314,17 +313,22 @@ class GameScreen extends ScreenContainer {
                     finished = false;
             }
 
-            if(finished)
-                console.log("finished!");
-                //alert("Finished all goals!");
+            setTimeout(function(){
+                if(finished) {
+                    console.log("finished!");
+                }
+                currentStep.removeClass("solution-selected");
+            }, 200);
         }
         else
         {
             var me = this;
             setTimeout(function(){
                 me.DoStep();
+                currentStep.removeClass("solution-selected");
             }, 200);
         }
+
 
     }
 
@@ -340,7 +344,7 @@ class GameScreen extends ScreenContainer {
 }
 
 function changePage(toPage, level) {
-    
+
 	// If navigating back
 	if (toPage == "back") {
 		GM.screenmanager.close();

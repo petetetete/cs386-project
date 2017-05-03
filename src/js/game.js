@@ -89,7 +89,7 @@ var pieces = {
 
 var solutions = {
 	1 : [
-		10
+		8
 	],
 	2 : [
 		5
@@ -103,10 +103,10 @@ var solutions = {
 };
 
 
-var get_draggable = function(id, p, s, style = '')
+var get_draggable = function(id, p, s)
 {
 	s = s || "";
-	return '<img data="'+s+'" style="'+style+'" id="'+id+'" ondragstart="drag_functions.drag(event)" draggable="true" src="' + p + '">';
+	return '<img data="'+s+'" class="game-piece-image" id="'+id+'" ondragstart="drag_functions.drag(event)" draggable="true" src="' + p + '">';
 };
 
 var drag_functions = {
@@ -136,9 +136,9 @@ var drag_functions = {
 
 			$("#" + data).siblings().text(g.pieces[data]);
 			$("#track_" + tracknum + "_" + trackpos).html(
-				"<button style='padding:0; border-width:0; width: 47px; height: 47px;' onclick='GM.screenmanager.topScreen.reclaim(" +
+				"<button class='solution-spot-button' onclick='GM.screenmanager.topScreen.reclaim(" +
 				tracknum + ", " + trackpos + ")'>" +
-				get_draggable(data, resources[data], 1, 'width: inherit;') + "</button>"
+				get_draggable(data, resources[data], 1) + "</button>"
 			);
 			g.solution[tracknum][trackpos] = data;
 		}
@@ -161,8 +161,6 @@ function displayPieces(level)
 {
 	var parts = pieces[level];
 
-
-
 	var html = '<div>';
 
 	for(var name in parts)
@@ -171,10 +169,10 @@ function displayPieces(level)
 
 		var img = get_draggable(name, resources[name], count);
 
-		html += '<div style="display: inline-flex; position: relative; width: 75px; height: 75px; margin: 5px;">' +
-			img +
-			"<div style='position: absolute; top: 0; right: 0;'>" + count + "</div>" +
-			'</div>';
+		html += '<div class="game-piece">' +
+					img +
+					'<div class="game-piece-number">' + count + '</div>' +
+				'</div>';
 
 	}
 
