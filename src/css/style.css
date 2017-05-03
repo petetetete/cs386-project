@@ -42,12 +42,8 @@ img.overlay {
 .page {
     display: none;
     flex-direction: column;
-    justify-content: center;
-}
-@media screen and (max-height: 600px){
-    .page {
-        justify-content: flex-start;
-    }
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .center-align {
@@ -79,13 +75,6 @@ img.overlay {
     font-size: 2em;
     cursor: pointer;
     color: #222;
-}
-
-.game-table {
-    border-spacing: 0;
-}
-.game-table td {
-    padding: 0;
 }
 
 .menu-block button:hover {
@@ -120,7 +109,7 @@ img.overlay {
 }
 .game-container > div {
     position: relative;
-    background-color: rgba(255,255,255,.2);
+    background-color: rgba(255,255,255,.3);
     border-left: 2px solid white;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
@@ -164,6 +153,10 @@ img.overlay {
     padding: 5px;
 }
 
+.start-button[disabled] {
+    pointer-events: none;
+    opacity: 0.8;
+}
 .start-button {
     width: 100%;
     height: 52px;
@@ -201,6 +194,9 @@ hr {
     background-color: #a6a6a6;
     background: repeating-linear-gradient(45deg, #a6a6a6, #a6a6a6 10px, #8c8c8c 10px, #8c8c8c 20px);
 }
+.solution-spot-button > .game-piece-image {
+    cursor: pointer;
+}
 
 .solution-spot-button {
     padding: 0;
@@ -233,7 +229,7 @@ hr {
 .game-piece-image {
     border-radius: 10px;
     width: inherit;
-    cursor: pointer;
+    cursor: move;
 }
 
 .game-piece-number {

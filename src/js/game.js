@@ -1,11 +1,12 @@
 var resources = {
 	empty : "images/empty.gif",
 	goal : "images/apple_green_good.png",
-	up : 'images/up.png',
 	blank : 'images/blank.png',
 	person : 'images/person.png',
 	right : 'images/right.png',
 	left : 'images/left.png',
+	up : 'images/up.png',
+	down : 'images/down.png',
 	wall : 'images/Wall.png',
 	spike : 'images/spike.png',
 	loop2 : 'images/loop2.png',
@@ -26,31 +27,46 @@ var rmap = {
 };
 
 var levels = {
+	/* Introduction to movement */
 	1 : [
-		[1, 0, 0, 0, 0, 0],
-		[1, 0, 0, 3, 1, 0],
-		[1, 0, 0, 0, 1, 0],
+		[1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1],
+		[1, 1, 3, 1, 1, 1],
+		[1, 1, 0, 0, 2, 1],
+		[1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1]
+	],
+	2 : [
+		[1, 1, 0, 0, 1, 1],
+		[1, 1, 0, 3, 0, 0],
+		[1, 1, 0, 0, 1, 0],
 		[1, 1, 1, 0, 1, 0],
 		[1, 0, 0, 0, 1, 0],
 		[1, 2, 1, 0, 0, 0]
 	],
-	2 : [
-		[1, 0, 0, 0, 0, 0],
-		[1, 0, 0, 1, 1, 1],
-		[1, 1, 1, 3, 0, 1],
-		[4, 3, 0, 1, 0, 1],
-		[1, 0, 1, 1, 2, 1],
-		[1, 2, 1, 0, 1, 0]
-	],
+
+	/* Introducing spikes */
 	3 : [
-		[1, 0, 0, 0, 0, 0],
+		[1, 1, 1, 1, 1, 1],
 		[1, 0, 0, 0, 1, 1],
+		[1, 2, 4, 3, 0, 1],
+		[1, 0, 1, 1, 0, 1],
+		[1, 0, 0, 0, 0, 1],
+		[1, 1, 1, 1, 1, 1]
+	],
+
+	/* Introducing loops */
+	4 : [
+		[1, 1, 1, 1, 1, 1],
+		[1, 1, 0, 0, 1, 1],
 		[1, 0, 0, 3, 0, 1],
 		[4, 0, 0, 1, 0, 1],
 		[0, 0, 1, 1, 0, 1],
-		[2, 0, 0, 0, 1, 0]
+		[2, 0, 0, 0, 0, 1]
 	],
-	4 : [
+
+	/* Introducing tracks and track conditions */
+	5 : [
 		[0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0],
 		[3, 0, 0, 1, 0, 0],
@@ -58,48 +74,79 @@ var levels = {
 		[0, 0, 0, 0, 0, 0],
 		[0, 0, 2, 0, 0, 0],
 	],
+
+	/* Introducing multiple players */
+	6 : [
+		[1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 1, 1, 1],
+		[1, 1, 1, 3, 0, 1],
+		[4, 3, 0, 1, 0, 1],
+		[1, 0, 1, 1, 2, 1],
+		[1, 2, 1, 1, 1, 1]
+	]
 };
 
 var pieces = {
 	1 : {
-		'up' : 4,
-		'right' : 4
+		left: 2,
+		right: 1,
+		up: 2,
+		down: 1,
 	},
 
 	2 : {
-		'up' : 4,
-		'right' : 1,
-		'left' : 1
+		left : 1,
+		right : 4,
+		up : 4,
 	},
 
 	3 : {
-		'up' : 1,
-		'right' : 1,
-		'loop2' : 1
+		left: 1,
+		right : 3,
+		up : 3,
+		down : 1,
 	},
 
 	4 : {
-		'up' : 1,
-		'loop3' : 2,
-		'testwallright' : 1,
-		'trackswitch' : 2,
-		'left' : 1
-	}
+		right : 1,
+		up : 1,
+		loop2 : 1,
+	},
+
+	5 : {
+		left : 1,
+		up : 1,
+		loop3 : 2,
+		testwallright : 1,
+		trackswitch : 2,
+	},
+
+	6 : {
+		left : 1,
+		right : 1,
+		up : 4,
+	},
 };
 
 var solutions = {
 	1 : [
-		8
-	],
-	2 : [
-		5
-	],
-	3 : [
 		4
 	],
+	2 : [
+		8
+	],
+	3 : [
+		6
+	],
 	4 : [
+		4
+	],
+	5 : [
 		5, 5
-	]
+	],
+	6 : [
+		5
+	],
 };
 
 

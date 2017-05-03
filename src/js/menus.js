@@ -118,7 +118,6 @@ class GameScreen extends ScreenContainer {
 
     ApplyMove(move)
     {
-        $(".board-container").html(displayBoard(this.tempboard));
 
         if(move != null)
         {
@@ -210,7 +209,6 @@ class GameScreen extends ScreenContainer {
             if(move == 'testwalldown')
                 this.testFor(1, 0, 1);
 
-
         }
         return [0, 1];
     }
@@ -291,6 +289,7 @@ class GameScreen extends ScreenContainer {
         currentStep.addClass("solution-selected");
 
         // apply move
+        $(".board-container").html(displayBoard(this.tempboard));
         var result = this.ApplyMove(this.solution[this.tracker[0]][this.tracker[1]]);
 
         if(this.switchflag_decay == 0)
@@ -314,10 +313,12 @@ class GameScreen extends ScreenContainer {
                     finished = false;
             }
 
+            var that = this;
             setTimeout(function(){
                 if(finished) {
                     console.log("finished!");
                 }
+                $(".board-container").html(displayBoard(that.tempboard));
                 currentStep.removeClass("solution-selected");
             }, 200);
         }
