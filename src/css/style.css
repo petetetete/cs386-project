@@ -100,6 +100,7 @@ img.overlay {
 }
 
 .game-container {
+    position: relative;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
                 0 0 2px 0 rgba(0,0,0,.2);
 }
@@ -121,6 +122,24 @@ img.overlay {
     justify-content: center;
     border-width:2px;
     border-style: outset;
+}
+
+#game-notification {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 99;
+    font-size: 24px;
+    display: none;
+
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
+                0 0 2px 0 rgba(0,0,0,.2);
 }
 
 .piece-container {

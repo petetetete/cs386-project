@@ -53,7 +53,7 @@ class GameScreen extends ScreenContainer {
         super();
         this.level = level;
 
-        $(".game-container").html(displayInterface() + displayStartButton());
+        $(".game-container").html(displayInterface() + displayStartButton() + "<div id='game-notification'>test</div>");
 
         $(".board-container").html(displayBoard(levels[level]));
         $(".piece-container").html(displayPieces(level));
@@ -77,6 +77,9 @@ class GameScreen extends ScreenContainer {
 
     Begin()
     {
+        $("#game-notification").hide();
+        $("#startbutton").prop('disabled', true);
+
         var players = [];
         var goals = [];
 
@@ -112,8 +115,6 @@ class GameScreen extends ScreenContainer {
 
         $(".board-container").html(displayBoard(this.tempboard));
         this.DoStep();
-
-        $("#startbutton").prop('disabled', true);
     }
 
     ApplyMove(move)
@@ -127,6 +128,14 @@ class GameScreen extends ScreenContainer {
                 {
                     p = this.players[p];
                     this.movePlayer(p, -1, 0);
+                }
+            }
+            if(move == 'down')
+            {
+                for(var p in this.players)
+                {
+                    p = this.players[p];
+                    this.movePlayer(p, 1, 0);
                 }
             }
             if(move == 'right')
@@ -248,6 +257,11 @@ class GameScreen extends ScreenContainer {
 
             this.tempboard[player[0]][player[1]] = 2;
         }
+        else {
+            $("#startbutton").prop('disabled', false);
+            $("#game-notification").text("You spiked your poor robot...");
+            $("#game-notification").show();
+        }
     }
 
     getGoal(player)
@@ -315,8 +329,9 @@ class GameScreen extends ScreenContainer {
 
             var that = this;
             setTimeout(function(){
-                if(finished) {
-                    console.log("finished!");
+                if(that.goals.length == 0) {
+                    $("#game-notification").text("Victory!");
+                    $("#game-notification").show();
                 }
                 $(".board-container").html(displayBoard(that.tempboard));
                 currentStep.removeClass("solution-selected");
@@ -367,7 +382,6 @@ function changePage(toPage, level) {
 	}
 
     if (toPage == 'game') {
-        console.log("GAME");
         GM.screenmanager.topScreen = new GameScreen(level);
     }
 }
