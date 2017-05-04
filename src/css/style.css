@@ -123,6 +123,7 @@ img.overlay {
 }
 
 .game-container {
+    user-select: none;
     position: relative;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
                 0 0 2px 0 rgba(0,0,0,.2);
@@ -143,7 +144,7 @@ img.overlay {
     padding: 5px;
     display: flex;
     justify-content: center;
-    border-width:2px;
+    border-width: 2px;
     border-style: outset;
 }
 
@@ -287,10 +288,11 @@ hr {
 }
 
 .game-piece.none-remain {
-    opacity: 0.75;
+    opacity: 0.5;
+    cursor: default;
 }
 .game-piece.none-remain > .game-piece-image {
-    cursor: default;
+    pointer-events: none;
 }
 
 .game-piece-image {
