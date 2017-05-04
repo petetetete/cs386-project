@@ -1,4 +1,8 @@
-## CS386 Project - Group 14
+# <img src="images/icon.png" width="24" height="24" /> Drop the Code 
+
+View application: https://petetetete.github.io/cs386-project/
+
+#### CS386 Project - Group 14
 
 A group project for Software Engineering describing and implementing an introductory coding game with the purpose of educating new programmers. Learn how to program with fun, intuitive puzzles.
 
