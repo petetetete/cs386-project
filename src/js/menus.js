@@ -48,11 +48,11 @@ class MainMenuScreen extends ScreenContainer
             buttons.each(function(i){
                 var onclick = $(this).prop("onclick").toString();
                 var thisbutton = onclick.match(/'[a-zA-Z]*'/g)[1].replace(/'/g, "");
-                if($.contains(completed, thisbutton))
+                if($.inArray(thisbutton, completed) != -1)
                 {
-                    if($(this).html().search('fa') != -1)
+                    if($(this).html().search('fa') == -1)
                     {
-                        $(this).append('<i class="fa fa-check" aria-hidden="true"></i>');
+                        $(this).append('<i style="padding-left:10px;" class="fa fa-check" aria-hidden="true"></i>');
                     }
                 }
             });
