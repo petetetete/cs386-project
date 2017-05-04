@@ -29,12 +29,14 @@ class MainMenuScreen extends ScreenContainer
 
         var arrow = document.getElementById("back");
     	// Conditionally hide back arrow
-    	if (this.parent == null) {
-    		arrow.style.display = "none";
-    	}
-    	else {
-    		arrow.style.display = "block";
-    	}
+        if (arrow) {
+            if (this.parent == null) {
+                arrow.style.display = "none";
+            }
+            else {
+                arrow.style.display = "block";
+            }
+        }
 
         // add check marks to all buttons!
         if(this.menuName == "levels")

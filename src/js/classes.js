@@ -2,7 +2,8 @@ class GameManager
 {
     constructor()
     {
-        this.users = [{
+        this.users = [];
+        this.registeredUsers = [{
             username: "ph289",
             password: "asdf"
         },
@@ -45,8 +46,8 @@ class GameManager
     }
 
     checkLogin(user, pass) {
-        for (var i = 0; i < this.users.length; i++) {
-            if (this.users[i].username == user && this.users[i].password == pass) {
+        for (var i = 0; i < this.registeredUsers.length; i++) {
+            if (this.registeredUsers[i].username == user && this.registeredUsers[i].password == pass) {
                 return true;
             }
         }

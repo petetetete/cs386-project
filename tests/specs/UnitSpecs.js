@@ -1,38 +1,30 @@
 describe("Menu Navigation", function() {
 
-    var testGM;
-
-    beforeEach(function() {
-        testGM = new GameManager();
-        testGM.screenmanager.root = new MainMenuScreen("home");
-        testGM.screenmanager.root.start();
-    });
-
     it("should be able to navigate from home to user-login", function() {
-        testGM.screenmanager.changePage("user-login");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("user-login");
+        changePage("user-login");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("user-login");
     });
 
     it("should navigate back a page correctly", function() {
-        testGM.screenmanager.changePage("user-login");
-        testGM.screenmanager.changePage("back");
+        changePage("user-login");
+        changePage("back");
 
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("home");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("home");
     });
 
     it("should be able to navigate from home screen to guest login", function(){
-        testGM.screenmanager.changePage("guest-login");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("guest-login");
+        changePage("guest-login");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("guest-login");
     });
 
     it("should be able to navigate from home screen to teacher login", function(){
-        testGM.screenmanager.changePage("teacher-login");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("teacher-login");
+        changePage("teacher-login");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("teacher-login");
     });
 
     it("should be able to navigate from home screen to creator login", function(){
-        testGM.screenmanager.changePage("creator-login");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("creator-login");
+       changePage("creator-login");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("creator-login");
     });
     
 });
@@ -54,100 +46,60 @@ describe("User Management", function() {
         expect(testGM.users.length).toEqual(1);
     });
 
-    it("should initialize a user's id correctly", function() {
-        var testUser = new User(42);
-        testGM.addUser(testUser);
-
-        expect(testGM.getUser(42).id).toEqual(42);
-    });
-
-    it("should be able to remove a user", function() {
-        var testUser1 = new User(1);
-        var testUser2 = new User(2);
-        testGM.addUser(testUser1);
-        testGM.addUser(testUser2);
-        testGM.removeUser(1);
-
-        expect(testGM.users.length).toEqual(1);
-    });
 });
 
 describe("In Game Menu Navigation", function(){
- 
-    var testGM;
-
-    beforeEach(function() {
-        testGM = new GameManager();
-        testGM.screenmanager.root = new MainMenuScreen("home");
-        testGM.screenmanager.root.start();
-    });
 
     it("should be able to start a single player game", function(){
-        testGM.screenmanager.changePage("levels");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
+        changePage("levels");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("levels");
     });
 
     it("should be able to start a multiplayer player game", function(){
-    testGM.screenmanager.changePage("levels");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("levels");
+        changePage("levels");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("levels");
     });
 
     it("should be able to go to settings", function(){
-    testGM.screenmanager.changePage("settings");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("settings");
+        changePage("settings");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("settings");
     });
 
     it("should be able to logout", function(){
-        testGM.screenmanager.changePage("logout");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("logout");
+        changePage("logout");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("logout");
     });
 });
 
 describe("Teacher Options Menu Navigation", function(){
- 
-    var testGM;
-
-    beforeEach(function() {
-        testGM = new GameManager();
-        testGM.screenmanager.root = new MainMenuScreen("home");
-        testGM.screenmanager.root.start();
-    });
 
     it("should be able to navigate to the list of student names", function(){
-        testGM.screenmanager.changePage("view-students");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("view-students");
+        changePage("view-students");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("view-students");
     });
 
     it("should be able to navigate to assign students page", function(){
-    testGM.screenmanager.changePage("assign-students");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("assign-students");
+        changePage("assign-students");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("assign-students");
     });
 
     it("should be able navigate to remind student page ", function(){
-    testGM.screenmanager.changePage("send-reminder");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("send-reminder");
+        changePage("send-reminder");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("send-reminder");
     });
 
 });
 
 describe("Settings Menu Navigation", function(){
  
-    var testGM;
-
-    beforeEach(function() {
-        testGM = new GameManager();
-        testGM.screenmanager.root = new MainMenuScreen("home");
-        testGM.screenmanager.root.start();
-    });
-
     it("should be able to navigate difficulty page", function(){
-        testGM.screenmanager.changePage("chosen");
-        expect(testGM.screenmanager.topScreen.menuName).toEqual("chosen");
+        changePage("chosen");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("chosen");
     });
 
     it("should be able to navigate to sound page", function(){
-    testGM.screenmanager.changePage("nothing");
-    expect(testGM.screenmanager.topScreen.menuName).toEqual("nothing");
+        changePage("nothing");
+        expect(GM.screenmanager.topScreen.menuName).toEqual("nothing");
     });
 
 

@@ -12,7 +12,7 @@ A group project for Software Engineering describing and implementing an introduc
 * Class Diagram - [PDF](deliverables/D4-group-14.pdf), [Word](deliverables/D4-group-14.docx)
 * Internal Design - [PDF](deliverables/D5-group-14.pdf), [Word](deliverables/D5-group-14.docx)
 * Automated Testing - [PDF](deliverables/D6.1-group-14.pdf), [Word](deliverables/D6.1-group-14.docx)
-* User Evaluation - PDF (Made on completion of document), [Word](deliverables/D6.2-group-14.docx)
+* User Evaluation - [PDF](deliverables/D6.2-group-14.docx), [Word](deliverables/D6.2-group-14.docx)
 
 #### Releases
 
