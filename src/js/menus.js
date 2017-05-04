@@ -35,6 +35,28 @@ class MainMenuScreen extends ScreenContainer
     	else {
     		arrow.style.display = "block";
     	}
+
+        // add check marks to all buttons!
+        if(this.menuName == "levels")
+        {
+            var buttons = $("#levelmenu div button");
+
+            //$("#levelmenu div button").each(function(e){console.log($(this).prop("onclick").toString().match(/'[a-zA-Z]*'/g)[1].replace(/'/g, ""));})
+
+            var completed = getCookie("completed").split(',');
+
+            buttons.each(function(i){
+                var onclick = $(this).prop("onclick").toString();
+                var thisbutton = onclick.match(/'[a-zA-Z]*'/g)[1].replace(/'/g, "");
+                if($.contains(completed, thisbutton))
+                {
+                    if($(this).html().search('fa') != -1)
+                    {
+                        $(this).append('<i class="fa fa-check" aria-hidden="true"></i>');
+                    }
+                }
+            });
+        }
     }
 
     restart()
@@ -143,16 +165,6 @@ class GameScreen extends ScreenContainer {
         $(".board-container").html(displayBoard(this.tempboard));
     }
 
-    resume()
-    {
-        if(this.halt == true)
-        {
-            this.halt = false;
-            $("#game-notification").hide();
-            this.DoStep();
-        }
-    }
-
     Begin()
     {
         $("#game-notification").hide();
@@ -199,6 +211,13 @@ class GameScreen extends ScreenContainer {
             // end
             $("#startbutton").prop('disabled', false);
 
+            var completed = getCookie("completed").split(",");
+            if($.contains(completed, this.level) == false)
+            {
+                completed.push(this.level);
+                setCookie("completed", completed.join(","));
+            }
+
             var that = this;
             setTimeout(function(){
                 $("#game-notification").text("Victory!");
@@ -212,7 +231,7 @@ class GameScreen extends ScreenContainer {
         else if(this.halt)
         {
             $("#startbutton").prop('disabled', false);
-            $("#game-notification").html("Halted Execution <button onclick='GM.screenmanager.topScreen.resume();'>Resume</button>");
+            $("#game-notification").html("Halted Execution");
             $("#game-notification").show();
             $("#startbutton").text("Reset");
             this.board_state = 'inactive';
@@ -302,6 +321,10 @@ class GameScreen extends ScreenContainer {
                     this.movePlayer(p, 0, -1);
                 }
             }
+            this.players = this.players.filter(function(p){
+                return p[2];
+            })
+
             if(move == 'loop2')
             {
                 return [0, -2];
@@ -414,7 +437,6 @@ class GameScreen extends ScreenContainer {
                 return player[0] == e[0] && player[1] == e[1];
             });
             player[2] = false;
-            this.players.splice(i, 1);
             this.tempboard[player[0]][player[1]] = 5; // death marker
         }
     }
