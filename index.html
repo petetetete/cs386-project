@@ -64,30 +64,16 @@
                     <div class="title">All Students</div>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('levels-complete')">Aeron Benjy</button>
+                    <button onclick="changePage('levels')">Aeron Benjy</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('levels-complete')">Dominik Zuriel</button>
+                    <button onclick="changePage('levels')">Dominik Zuriel</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('levels-complete')">Matthias Iosif</button>
+                    <button onclick="changePage('levels')">Matthias Iosif</button>
                 </div>
                 <div class="menu-block">
-                    <button onclick="changePage('levels-complete')">Geghard Alin</button>
-                </div>
-            </div>
-            <div data-page="levels-complete" class="page">
-                <div class="menu-block">
-                    <div class="title">Check for completion</div>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('game', 1)">Level 1</button>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('game', 2)">Level 2</button>
-                </div>
-                <div class="menu-block">
-                    <button onclick="changePage('game', 3)">Level 3</button>
+                    <button onclick="changePage('levels')">Geghard Alin</button>
                 </div>
             </div>
             <div data-page="game" class="page">
@@ -144,47 +130,55 @@
                 <div class="menu-block">
                     <div class="title">Instructions</div>
                 </div>
+                <hr>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/left.png" /><b>Move</b> the robot <b>left</b></div>
+                    <div class="instruction"><img src="images/moveinstruction.png" /><div><p>Help robot friend recharge his battery</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/right.png" /><b>Move</b> the robot <b>right</b></div>
+                    <div class="instruction"><img src="images/draginstruction.png" /><div><p>Drag and drop instructions onto his instruction track</p></div></div>
+                </div>
+                <hr>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/left.png" /><div><p><b>Move</b> the robot <b>left</b></p></p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/up.png" /><b>Move</b> the robot <b>up</b></div>
+                    <div class="instruction"><img src="images/right.png" /><div><p><b>Move</b> the robot <b>right</b></p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/down.png" /><b>Move</b> the robot <b>down</b></div>
+                    <div class="instruction"><img src="images/up.png" /><div><p><b>Move</b> the robot <b>up</b></p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/loop2.png" /><b>Loop</b> back <b>2 instructions</b> on the same track</div>
+                    <div class="instruction"><img src="images/down.png" /><div><p><b>Move</b> the robot <b>down</b></p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/loop3.png" /><b>Loop</b> back <b>3 instructions</b> on the same track</div>
+                    <div class="instruction"><img src="images/loop2.png" /><div><p><b>Loop</b> back <b>2 instructions</b> on the same track</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/loop4.png" /><b>Loop</b> back <b>4 instructions</b> on the same track</div>
+                    <div class="instruction"><img src="images/loop3.png" /><div><p><b>Loop</b> back <b>3 instructions</b> on the same track</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/trackup.png" /><b>Switch</b> to the <b>track above</b> the current track</div>
+                    <div class="instruction"><img src="images/loop4.png" /><div><p><b>Loop</b> back <b>4 instructions</b> on the same track</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/trackdown.png" /><b>Switch</b> to the <b>track below</b> the current track</div>
+                    <div class="instruction"><img src="images/trackup.png" /><div><p><b>Switch</b> to the <b>track above</b> the current track</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/trackswitch.png" /><b>Cycle down</b> a <b>track</b>, wrapping around the last</div>
+                    <div class="instruction"><img src="images/trackdown.png" /><div><p><b>Switch</b> to the <b>track below</b> the current track</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/testwallleft.png" />Execute next instruction <b>iff</b> there is a <b>wall</b> to the <b>left</b></div>
+                    <div class="instruction"><img src="images/trackswitch.png" /><div><p><b>Cycle down</b> a <b>track</b>, wrapping around the last</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/testwallright.png" />Execute next instruction <b>iff</b> there is a <b>wall</b> to the <b>right</b></div>
+                    <div class="instruction"><img src="images/testwallleft.png" /><div><p><b>If</b> there is a <b>wall</b> to the <b>left of the robot</b>, execute the next instruction, otherwise, skip it</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/testwallup.png" />Execute next instruction <b>iff</b> there is a <b>wall above</b></div>
+                    <div class="instruction"><img src="images/testwallleft.png" /><div><p><b>If</b> there is a <b>wall</b> to the <b>right of the robot</b>, execute the next instruction, otherwise, skip it</p></div></div>
                 </div>
                 <div class="menu-block">
-                    <div class="instruction"><img src="images/testwalldown.png" />Execute next instruction <b>iff</b> there is a <b>wall below</b></div>
+                    <div class="instruction"><img src="images/testwallup.png" /><div><p><b>If</b> there is a <b>wall above the robot</b>, execute the next instruction, otherwise, skip it</p></div></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/testwalldown.png" /><div><p><b>If</b> there is a <b>wall below the robot</b>, execute the next instruction, otherwise, skip it</p></div></div>
                 </div>
             </div>
             <div data-page="settings" class="page">
@@ -296,7 +290,7 @@
             </div>
             <div data-page="emailpage" class="page">
                 <div class="menu-block">
-                    <input data-clear="true" value="Student E-mail" />
+                    <input placeholder="Student E-mail" />
                 </div>
                 <div class="menu-block">
                     <button onclick="changePage('email-sent-page')">Send</button>

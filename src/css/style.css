@@ -93,15 +93,23 @@ img.overlay {
     background-color: rgba(255,255,255,.3);
     color: #fff;
     font-size: 1em;
+
+    display: flex;
 }
 .instruction > img {
-    width: 80px;
+    width: auto;
     height: 80px;
     margin: 10px;
-    float: left;
 
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
                 0 0 2px 0 rgba(0,0,0,.2);
+}
+
+.instruction > div {
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu-block input {
