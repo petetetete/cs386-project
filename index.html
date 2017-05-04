@@ -128,6 +128,9 @@
                 <div class="menu-block">
                     <button onclick="changePage('levels')">Play Game</button>
                 </div>
+                <div class="menu-block">
+                    <button onclick="changePage('instructions')">Instructions</button>
+                </div>
                 <hr>
                 <div class="menu-block">
                     <button onclick="changePage('settings')">Settings</button>
@@ -137,7 +140,54 @@
                     <button onclick="changePage('home')">Logout</button>
                 </div>
             </div>
-                <div data-page="settings" class="page">
+            <div data-page="instructions" class="page">
+                <div class="menu-block">
+                    <div class="title">Instructions</div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/left.png" /><b>Move</b> the robot <b>left</b></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/right.png" /><b>Move</b> the robot <b>right</b></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/up.png" /><b>Move</b> the robot <b>up</b></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/down.png" /><b>Move</b> the robot <b>down</b></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/loop2.png" /><b>Loop</b> back <b>2 instructions</b> on the same track</div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/loop3.png" /><b>Loop</b> back <b>3 instructions</b> on the same track</div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/loop4.png" /><b>Loop</b> back <b>4 instructions</b> on the same track</div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/trackup.png" /><b>Switch</b> to the <b>track above</b> the current track</div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/trackdown.png" /><b>Switch</b> to the <b>track below</b> the current track</div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/trackswitch.png" /><b>Cycle down</b> a <b>track</b>, wrapping around the last</div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/testwallleft.png" />Execute next instruction <b>iff</b> there is a <b>wall</b> to the <b>left</b></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/testwallright.png" />Execute next instruction <b>iff</b> there is a <b>wall</b> to the <b>right</b></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/testwallup.png" />Execute next instruction <b>iff</b> there is a <b>wall above</b></div>
+                </div>
+                <div class="menu-block">
+                    <div class="instruction"><img src="images/testwalldown.png" />Execute next instruction <b>iff</b> there is a <b>wall below</b></div>
+                </div>
+            </div>
+            <div data-page="settings" class="page">
                 <div class="menu-block">
                     <div class="title">Choose a Setting</div>
                 </div>

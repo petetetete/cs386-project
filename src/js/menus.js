@@ -41,8 +41,6 @@ class MainMenuScreen extends ScreenContainer
         {
             var buttons = $("#levelmenu div button");
 
-            //$("#levelmenu div button").each(function(e){console.log($(this).prop("onclick").toString().match(/'[a-zA-Z]*'/g)[1].replace(/'/g, ""));})
-
             var completed = getCookie("completed").split(',');
 
             buttons.each(function(i){

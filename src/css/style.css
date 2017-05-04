@@ -89,6 +89,21 @@ img.overlay {
     font-size: 3em;
 }
 
+.instruction {
+    background-color: rgba(255,255,255,.3);
+    color: #fff;
+    font-size: 1em;
+}
+.instruction > img {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    float: left;
+
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.18),
+                0 0 2px 0 rgba(0,0,0,.2);
+}
+
 .menu-block input {
     border: none;
     display: block;
@@ -271,7 +286,7 @@ hr {
 }
 
 .game-piece-image {
-    border-radius: 10px;
+    border-radius: 6px;
     width: inherit;
     cursor: move;
 }
