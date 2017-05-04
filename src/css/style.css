@@ -13,6 +13,11 @@ head, body {
     top: 12px; left: 24px;
 
     text-shadow: 0 2px 5px rgba(0,0,0,.18);
+
+    transition: text-shadow 0.2s;
+}
+.back-button:hover {
+    text-shadow: 0 4px 12px rgba(0,0,0,.32);
 }
 
 img.overlay {
@@ -69,24 +74,25 @@ img.overlay {
 }
 
 .menu-block button {
-    border: none;
     display: block;
-    font-size: 2em;
+    font-size: 1.75em;
     cursor: pointer;
-    background-color: #8bc34a;
-    border: 2px solid #1B5E20;
-
-    border: 2px solid #1B5E20;
     border-radius: 5px;
+    outline: none;
 
-    transition: box-shadow 0.2s ease,
-                background-color ease 0.25s,
-                color ease 0.25s;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.25);
+    background-color: rgba(255,255,255,.3);
+    color: #015C83;
+    border: 3px solid #015C83;
+
+    transition: box-shadow 0.2s,
+                background-color 0.2s,
+                color 0.2s;
 }
 
 .menu-block button:hover {
-    background-color: #2E7D32;
-    color: #fff;
+    background-color: rgba(255,255,255,.9);
+
     box-shadow: 0 4px 12px 0 rgba(0,0,0,.32),
                 0 0 2px 0 rgba(0,0,0,.2);
 }
@@ -95,6 +101,7 @@ img.overlay {
     background-color: #0288D1;
     color: #fff;
     font-size: 3em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.25);
 }
 
 .instruction {
@@ -115,10 +122,11 @@ img.overlay {
 }
 
 .instruction > div {
-    line-height: 1;
+    line-height: 1.1;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.25);
 }
 
 .menu-block input {
@@ -154,7 +162,8 @@ img.overlay {
     display: flex;
     justify-content: center;
     border-width: 2px;
-    border-style: outset;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #game-notification {
@@ -177,7 +186,7 @@ img.overlay {
 
 .piece-container {
     user-select: none;
-    padding-top: 35px;
+    padding-top: 32px;
 }
 .piece-container::before {
     content: "All Instructions";
@@ -190,7 +199,7 @@ img.overlay {
 }
 
 .solution-container {
-    padding-top: 35px;
+    padding-top: 32px;
 }
 .solution-container::before {
     content: "Current Instruction Set";
@@ -204,6 +213,8 @@ img.overlay {
 
 .start-container {
     padding: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .start-button[disabled] {
@@ -215,9 +226,11 @@ img.overlay {
     height: 52px;
     cursor: pointer;
     font-size: 20px;
+    color: #222;
     background-color: #8bc34a;
     border: 2px solid #1B5E20;
     border-radius: 5px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.25);
 
     transition: background-color ease 0.25s,
                 color ease 0.25s;
@@ -269,6 +282,7 @@ hr {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    outline: none;
 }
 
 .solution-selected {
